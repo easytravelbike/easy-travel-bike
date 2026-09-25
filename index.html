@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="index,follow" name="robots"/><meta content="Easy Travel Bike — Taiwan local cycling partner for bike rental, bike transport, luggage transfer, support vehicles and professional mechanic support." name="description"/>
+<title>EASY TRAVEL BIKE｜東勳輕旅｜Your Taiwan Cycling Partner</title><style>
+:root{--navy:#06182f;--navy2:#0b2948;--gold:#d8b45c;--gold2:#f2d98f;--white:#fff;--muted:#aebdcd;--line:rgba(216,180,92,.25);--panel:rgba(255,255,255,.045)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--navy);color:var(--white);font-family:Arial,"Noto Sans TC",sans-serif;line-height:1.7}a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}
+.nav{position:sticky;top:0;z-index:30;background:rgba(6,24,47,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.nav-in{height:76px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:900;color:var(--gold);letter-spacing:.12em}.brand small{display:block;color:#fff;font-size:11px;letter-spacing:.22em}.navlinks{display:flex;gap:22px;align-items:center;font-size:14px;color:#dbe4ed}.navlinks a:hover{color:var(--gold2)}.pill{border:1px solid var(--gold);padding:8px 16px;border-radius:999px;color:var(--gold)}.langs{display:flex;gap:5px;margin-left:6px;flex-shrink:0}.langbtn{border:1px solid rgba(255,255,255,.22);background:transparent;color:#dbe4ed;border-radius:999px;padding:6px 9px;font-size:11px;cursor:pointer}.langbtn.active,.langbtn:hover{border-color:var(--gold);color:var(--gold2)}
+.hero{background:radial-gradient(circle at 80% 15%,rgba(216,180,92,.16),transparent 28%),linear-gradient(135deg,var(--navy),var(--navy2));min-height:82vh;display:flex;align-items:center}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:65px;align-items:center;padding:80px 0}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.26em}.hero h1{font-size:clamp(54px,7vw,94px);line-height:.98;letter-spacing:-.045em;margin:18px 0 26px}.gold{color:var(--gold)}.lead{font-size:18px;color:#d3deea;max-width:720px}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:30px}.btn{display:inline-block;border-radius:999px;padding:13px 22px;font-weight:800}.goldbtn{background:var(--gold);color:var(--navy)}.outline{border:1px solid rgba(255,255,255,.35)}.outline:hover{border-color:var(--gold);color:var(--gold2)}
+.hero-panel{border:1px solid var(--line);border-radius:28px;padding:34px;min-height:410px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(216,180,92,.05));display:flex;flex-direction:column;justify-content:space-between}.hero-panel .big{font-size:55px;font-weight:900;line-height:1.05}.hero-panel .big b{color:var(--gold)}.mini{font-size:12px;letter-spacing:.18em;color:var(--gold)}
+.section{padding:100px 0}.alt{background:#09223e}.section h2{font-size:clamp(36px,5vw,60px);line-height:1.05;margin:10px 0 22px}.sub{color:#cbd7e3;font-size:17px;max-width:760px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}.card{border:1px solid rgba(255,255,255,.1);background:var(--panel);padding:26px;border-radius:18px;min-height:170px}.card:hover{border-color:var(--line)}.card h3{color:var(--gold2);margin:0 0 8px}
+.route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}.route{padding:30px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(135deg,rgba(216,180,92,.1),rgba(255,255,255,.03));font-size:21px;font-weight:800}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.box{padding:30px;border:1px solid var(--line);border-radius:20px;background:rgba(216,180,92,.06)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:35px}.step{padding:22px;border-top:2px solid var(--gold);background:var(--panel)}.step b{color:var(--gold);font-size:25px;display:block}
+.quote{background:linear-gradient(135deg,#0c2a4a,#06182f)}.quote-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px}.form{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:30px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:#d6e0ea;letter-spacing:.04em}.field input,.field select,.field textarea{width:100%;padding:13px;border-radius:9px;border:1px solid rgba(255,255,255,.15);background:#06172b;color:#fff}.field textarea{min-height:115px;resize:vertical}.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.checks label{font-size:13px;color:#dce5ed}.form-note{font-size:12px;color:var(--muted);margin-top:12px}
+.faq{display:grid;gap:12px;margin-top:35px}.faq details{background:var(--panel);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:18px 20px}.faq summary{cursor:pointer;font-weight:700;color:var(--gold2)}
+footer{border-top:1px solid var(--line);padding:35px 0;background:#041225;color:var(--muted)}footer .foot{display:flex;justify-content:space-between;gap:20px}footer strong{color:var(--gold)}
+@media(max-width:900px){.hero-grid,.split,.quote-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.route-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.navlinks{display:flex;gap:8px}.navlinks>a:not(.pill){display:none}.navlinks>a.pill{display:none}.langs{display:flex;margin-left:0}.langbtn{padding:7px 10px;font-size:12px;background:rgba(6,24,47,.96)}}
+@media(max-width:560px){.cards,.route-grid,.steps,.formgrid,.checks{grid-template-columns:1fr}.section{padding:72px 0}.hero-grid{padding:60px 0}.hero h1{font-size:54px}footer .foot{display:block}}
+</style>
+<style>
+.date-range-group{display:grid;gap:8px;margin-bottom:16px}
+.date-range-group + .date-range-group{margin-top:12px}
+</style>
+
+<style>
+.service-options{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:100%;
+}
+.service-option{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:14px !important;
+  width:100%;
+  min-height:52px;
+  padding:12px 14px;
+  box-sizing:border-box;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+}
+.service-option input[type="checkbox"]{
+  position:static !important;
+  flex:0 0 auto;
+  width:22px;
+  height:22px;
+  margin:0 !important;
+}
+.service-option label{
+  flex:1 1 auto;
+  margin:0 !important;
+  text-align:left !important;
+  line-height:1.4;
+  cursor:pointer;
+}
+</style>
+
+<style>
+.checks.service-options{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:10px !important;
+  width:100% !important;
+}
+.checks.service-options .service-option{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:14px !important;
+  width:100% !important;
+  min-height:52px;
+  margin:0 !important;
+  padding:12px 14px !important;
+  box-sizing:border-box;
+  text-align:left !important;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+}
+.checks.service-options .service-option input[type="checkbox"]{
+  position:static !important;
+  flex:0 0 auto !important;
+  width:22px !important;
+  height:22px !important;
+  margin:0 !important;
+}
+.checks.service-options .service-option span{
+  flex:1 1 auto !important;
+  margin:0 !important;
+  text-align:left !important;
+  line-height:1.4;
+}
+</style>
+
+<style>
+.date-range{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  width:100%;
+}
+.date-field{
+  min-width:0;
+}
+.date-field label{
+  display:block;
+  margin-bottom:8px;
+}
+@media (max-width:600px){
+  .date-range{grid-template-columns:1fr;}
+}
+</style>
+
+<style>
+.service-option-wrap{width:100%}
+.service-detail{
+  display:none;
+  margin:6px 0 10px 36px;
+  padding:10px 12px;
+  border-left:2px solid rgba(224,190,91,.65);
+}
+.service-detail label{display:block;margin-bottom:6px;font-size:.92em}
+.service-detail input[type="number"]{width:100%;box-sizing:border-box}
+</style>
+
+<style>
+.business-contact .business-email{
+  padding:14px 16px;
+  border:1px solid rgba(216,180,92,.28);
+  border-radius:12px;
+  background:rgba(255,255,255,.035);
+  font-size:1.05em;
+}
+</style>
+
+<style>
+.inquiry-summary{
+  margin-top:24px;
+  padding:22px;
+  border:1px solid rgba(216,180,92,.35);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+}
+.summary-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+.summary-head h3{margin:0}
+.summary-head span{font-size:.85em;color:var(--muted)}
+.summary-content{display:grid;gap:8px}
+.summary-row{
+  display:grid;
+  grid-template-columns:minmax(120px,.7fr) minmax(0,1.3fr);
+  gap:16px;
+  padding:9px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.summary-row span{color:var(--muted)}
+.summary-row strong{font-weight:500;overflow-wrap:anywhere}
+.summary-section{margin-top:16px}
+.summary-section h4{margin:0 0 8px}
+.summary-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.secondarybtn{
+  background:transparent;
+  border:1px solid rgba(216,180,92,.45);
+  color:var(--white);
+}
+.summary-muted{color:var(--muted)}
+@media(max-width:600px){
+  .summary-row{grid-template-columns:1fr;gap:3px}
+  .summary-actions .btn{width:100%}
+}
+</style>
+</head>
+<body><header class="nav"><div class="container nav-in">
+<a class="brand" href="index.html">EASY TRAVEL BIKE<small>東勳輕旅</small></a>
+<div class="navlinks"><a data-i18n="nav_services" href="#services">Services</a><a data-i18n="nav_routes" href="#routes">Routes</a><a data-i18n="nav_support" href="#support">Support</a><a data-i18n="nav_clubs" href="#b2b">For Clubs</a><a data-i18n="nav_boundary" href="#boundary">Service Boundary</a><a data-i18n="nav_partners" href="#travel-agency">Travel Partners</a><a class="pill" data-i18n="nav_quote" href="#quote">Get a Quote</a><div class="langs"><button class="langbtn active" data-lang="en">EN</button><button class="langbtn" data-lang="zh">繁中</button></div></div>
+</div></header>
+<section class="hero"><div class="container hero-grid"><div>
+<div class="eyebrow" data-i18n="eyebrow">YOUR TAIWAN CYCLING PARTNER</div>
+<h1><span data-i18n="hero_title1">Ride Taiwan.</span><br/><span class="gold" data-i18n="hero_title2">Travel Easy.</span></h1>
+<p class="lead" data-i18n="hero_lead">Bike rental is only one part of what we do. Whether you rent a bike or bring your own, EASY TRAVEL BIKE helps coordinate the local support your Taiwan cycling trip needs.</p>
+<div class="actions"><a class="btn goldbtn" data-i18n="request_quote" href="#quote">REQUEST A QUOTE</a><a class="btn outline" data-i18n="bring_bike" href="#support">I BRING MY OWN BIKE</a></div>
+</div><div class="hero-panel"><div class="mini">EASY TRAVEL BIKE</div><div class="big" data-i18n="hero_panel">TAIWAN<br/><b>CYCLING<br/>SUPPORT</b></div><div class="mini" data-i18n="hero_tags">LOCAL · FLEXIBLE · INTEGRATED · PRACTICAL</div></div></div></section>
+<section class="section"><div class="container"><div class="eyebrow" data-i18n="one_partner">ONE LOCAL PARTNER</div><h2><span data-i18n="more_than">More Than</span><br/><span class="gold" data-i18n="bike_rental">Bike Rental.</span></h2><p class="sub" data-i18n="partner_sub">A practical support system for overseas cyclists, cycling clubs and tour operators visiting Taiwan.</p>
+<div class="cards">
+<div class="card"><h3 data-i18n="local">LOCAL</h3><p data-i18n="local_p">Local Taiwan knowledge and practical on-the-ground resources.</p></div>
+<div class="card"><h3 data-i18n="flexible">FLEXIBLE</h3><p data-i18n="flexible_p">Support from individual riders to VIP groups and larger tours.</p></div>
+<div class="card"><h3 data-i18n="integrated">INTEGRATED</h3><p data-i18n="integrated_p">Bike, people, luggage, vehicle and mechanic resources can be combined.</p></div>
+<div class="card"><h3 data-i18n="practical">PRACTICAL</h3><p data-i18n="practical_p">One point of contact to reduce the complexity of your Taiwan ride.</p></div>
+</div></div></section>
+<section class="section alt" id="services"><div class="container"><div class="eyebrow" data-i18n="modules">9 SUPPORT MODULES</div><h2><span data-i18n="build_your">Build Your</span> <span class="gold" data-i18n="ride">Ride.</span></h2><div class="cards">
+<div class="card"><h3 data-i18n="svc1h">01 · BIKE RENTAL</h3><p data-i18n="svc1p">Road bikes and group bike resources.</p></div>
+<div class="card"><h3 data-i18n="svc2h">02 · E-BIKE RENTAL</h3><p data-i18n="svc2p">E-bike resources for riders and groups.</p></div>
+<div class="card"><h3 data-i18n="svc3h">03 · BIKE TRANSPORT</h3><p data-i18n="svc3p">Move bikes between airports, hotels, cities and routes.</p></div>
+<div class="card"><h3 data-i18n="svc4h">04 · LUGGAGE TRANSFER</h3><p data-i18n="svc4p">Ride light while luggage moves between stays.</p></div>
+<div class="card"><h3 data-i18n="svc5h">05 · PASSENGER TRANSFER SUPPORT</h3><p data-i18n="svc5p">Passenger transfers can be arranged through appropriately licensed transportation providers and suitable vehicles, subject to applicable Taiwan regulations and service requirements.</p></div>
+<div class="card"><h3 data-i18n="svc6h">06 · SUPPORT VEHICLE</h3><p data-i18n="svc6p">Follow-vehicle support for selected groups and routes.</p></div>
+<div class="card"><h3 data-i18n="svc7h">07 · PROFESSIONAL MECHANIC</h3><p data-i18n="svc7p">Local mechanical assistance when your group needs it.</p></div>
+<div class="card"><h3 data-i18n="svc8h">08 · BACKUP BIKE</h3><p data-i18n="svc8p">Contingency bike resources for unexpected problems.</p></div>
+<div class="card"><h3 data-i18n="svc9h">09 · RIDE LEADER</h3><p data-i18n="svc9p">Local cycling support to lead your group along the planned route. This is a cycling support role, not a tour guide service.</p></div>
+</div></div></section>
+<section class="section" id="routes"><div class="container"><div class="eyebrow" data-i18n="routes_eyebrow">TAIWAN BY BIKE</div><h2 data-i18n="routes_title">Choose Your <span class="gold">Route.</span></h2><p class="sub" data-i18n="routes_sub">From a complete Taiwan round island to a focused mountain or coastal ride.</p><div class="route-grid">
+<div class="route" data-i18n="route_round">Taiwan Round Island</div><div class="route" data-i18n="route_east">East Coast</div><div class="route" data-i18n="route_wuling">Wuling</div><div class="route" data-i18n="route_north">North Taiwan</div><div class="route" data-i18n="route_south">South Taiwan</div><div class="route" data-i18n="route_custom">Custom Route</div>
+</div></div></section>
+<section class="section alt" id="support"><div class="container split"><div><div class="eyebrow" data-i18n="byo_eyebrow">BRING YOUR OWN BIKE</div><h2 data-i18n="byo_title">Your Bike.<br/><span class="gold">Our Local Support.</span></h2><p class="sub" data-i18n="byo_sub">You do not have to rent a bicycle to work with us. Bring your own bike and use our local resources.</p></div>
+<div class="box"><h3 data-i18n="example_title">Example: self-bike group</h3><p data-i18n="example_intro">8 riders can combine:</p><ul><li data-i18n="li_bike">Bike transport</li><li data-i18n="li_luggage">Luggage transfer</li><li data-i18n="li_transfer">Airport &amp; hotel transfer</li><li data-i18n="li_vehicle">Support vehicle</li><li data-i18n="li_mechanic">Professional mechanic</li><li data-i18n="li_backup">Backup bike resource</li></ul></div></div></section>
+<section class="section" id="b2b"><div class="container"><div class="eyebrow" data-i18n="b2b_eyebrow">FOR CYCLING CLUBS &amp; TOUR OPERATORS</div><h2 data-i18n="b2b_title">Your Taiwan <span class="gold">Local Partner.</span></h2><p class="sub" data-i18n="b2b_sub">For overseas cycling clubs, bike shops, licensed travel agencies and tour operators who need Taiwan-side cycling execution support.</p>
+<div class="steps"><div class="step"><b>01</b><span data-i18n="step_inquiry">Inquiry</span><br/><small data-i18n="step_inquiry_p">Tell us riders, dates and route.</small></div><div class="step"><b>02</b><span data-i18n="step_plan">Plan</span><br/><small data-i18n="step_plan_p">We organize the support modules.</small></div><div class="step"><b>03</b><span data-i18n="step_quote">Quote</span><br/><small data-i18n="step_quote_p">Receive a practical service proposal.</small></div><div class="step"><b>04</b><span data-i18n="step_execute">Execute</span><br/><small data-i18n="step_execute_p">Coordinate the Taiwan-side operation.</small></div></div></div></section>
+<section class="section quote" id="quote"><div class="container quote-grid"><div><div class="eyebrow" data-i18n="request_quote_label">REQUEST A QUOTE</div><h2><span data-i18n="lets_plan">Let's plan your</span><br/><span class="gold" data-i18n="cycling_support">Cycling Support.</span></h2><p class="sub" data-i18n="quote_intro">Tell us what you already know. If you are still planning, that's okay — we can start from the basics.</p>
+<div class="box"><h3 data-i18n="next_title">What happens next?</h3><p data-i18n="next_p">1. Your request is prepared as a clear inquiry summary.<br/>2. You can review it before sending.<br/>3. Your request is sent directly to EASY TRAVEL BIKE through the connected form service.</p></div></div>
+<div class="form"><form id="quoteForm" data-formspree-endpoint="https://formspree.io/f/xkjgvkzy"><div class="formgrid">
+<div class="field"><label data-i18n="f_country">COUNTRY / MARKET</label><input data-i18n-placeholder="country_ph" id="country" placeholder="Singapore" required=""/></div>
+<div class="field"><label data-i18n="f_riders">NUMBER OF CYCLISTS</label><input id="riders" min="1" placeholder="8" required="" type="number"/></div>
+<div class="field"><div class="date-range">
+  <div class="date-field">
+    <label data-i18n="f_start_date">騎乘開始日期</label>
+    <input id="startDate" type="date" required/>
+  </div>
+  <div class="date-field">
+    <label data-i18n="f_end_date">騎乘結束日期</label>
+    <input id="endDate" type="date" required/>
+  </div>
+</div></div>
+<div class="field"><label data-i18n="f_start_point">騎乘起點</label><input id="startPoint" data-i18n-placeholder="start_point_ph" placeholder="Taipei" required=""/></div>
+<div class="field"><label data-i18n="f_end_point">騎乘終點</label><input id="endPoint" data-i18n-placeholder="end_point_ph" placeholder="Kaohsiung" required=""/></div>
+<div class="field"><label data-i18n="f_route">ROUTE / TRIP TYPE</label><select id="route"><option data-i18n="route_round">Taiwan Round Island</option><option data-i18n="route_east">East Coast</option><option data-i18n="route_wuling">Wuling</option><option data-i18n="route_north">North Taiwan</option><option data-i18n="route_south">South Taiwan</option><option data-i18n="route_custom">Custom Route</option><option data-i18n="route_other">Other</option></select></div>
+<div class="field"><label data-i18n="f_direction">RIDING DIRECTION</label><select id="direction" required=""><option value="Clockwise" data-i18n="direction_clockwise">Clockwise</option><option value="Counterclockwise" data-i18n="direction_counterclockwise">Counterclockwise</option><option value="Linear / Point-to-Point" data-i18n="direction_linear">Linear / Point-to-Point</option></select></div>
+<div class="field full"><label data-i18n="f_bike">BIKE PLAN</label><select id="bike"><option data-i18n="opt_rent">Rent a bike</option><option data-i18n="opt_bring">Bring my own bike</option><option data-i18n="opt_unsure">Not sure yet</option></select></div>
+<div class="field full"><label data-i18n="f_services">SERVICES NEEDED</label>
+<div class="checks service-options">
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Bike Rental" data-detail="bike-rental-detail"> <span data-i18n="svc_short1">Bike Rental</span></label>
+    <div class="service-detail" id="bike-rental-detail"><label data-i18n="qty_bike_rental">需要幾台單車？</label><input type="number" min="1" step="1" name="qty_bike_rental" placeholder="例如：6"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="E-Bike Rental" data-detail="ebike-rental-detail"> <span data-i18n="svc_short2">E-Bike Rental</span></label>
+    <div class="service-detail" id="ebike-rental-detail"><label data-i18n="qty_ebike_rental">需要幾台電輔車？</label><input type="number" min="1" step="1" name="qty_ebike_rental" placeholder="例如：6"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Bike Transport" data-detail="bike-transport-detail"> <span data-i18n="svc_short3">Bike Transport</span></label>
+    <div class="service-detail" id="bike-transport-detail"><label data-i18n="qty_bike_transport">需要運輸幾台單車？</label><input type="number" min="1" step="1" name="qty_bike_transport" placeholder="例如：8"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Luggage Transfer" data-detail="luggage-detail"> <span data-i18n="svc_short4">Luggage Transfer</span></label>
+    <div class="service-detail" id="luggage-detail"><label data-i18n="qty_luggage">每天約有幾件行李？</label><input type="number" min="1" step="1" name="qty_luggage" placeholder="例如：8"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Passenger Transfer Support" data-detail="passenger-detail"> <span data-i18n="svc_short5">Passenger Transfer Support</span></label>
+    <div class="service-detail" id="passenger-detail"><label data-i18n="qty_passengers">需要接駁幾位旅客？</label><input type="number" min="1" step="1" name="qty_passengers" placeholder="例如：8"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Support Vehicle" data-detail="vehicle-detail"> <span data-i18n="svc_short6">Support Vehicle</span></label>
+    <div class="service-detail" id="vehicle-detail"><label data-i18n="qty_vehicle">需要幾台支援車？</label><input type="number" min="1" step="1" name="qty_vehicle" placeholder="例如：1"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Mechanic" data-detail="mechanic-detail"> <span data-i18n="svc_short7">Professional Mechanic</span></label>
+    <div class="service-detail" id="mechanic-detail"><label data-i18n="qty_mechanic">需要幾位技師？</label><input type="number" min="1" step="1" name="qty_mechanic" placeholder="例如：1"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Backup Bike" data-detail="backup-detail"> <span data-i18n="svc_short8">Backup Bike</span></label>
+    <div class="service-detail" id="backup-detail"><label data-i18n="qty_backup">需要幾台備用單車？</label><input type="number" min="1" step="1" name="qty_backup" placeholder="例如：1"/></div>
+  </div>
+  <div class="service-option-wrap">
+    <label class="service-option"><input type="checkbox" value="Ride Leader" data-detail="leader-detail"> <span data-i18n="svc_short9">Ride Leader</span></label>
+    <div class="service-detail" id="leader-detail"><label data-i18n="qty_leader">需要幾位領騎？</label><input type="number" min="1" step="1" name="qty_leader" placeholder="例如：1"/></div>
+  </div>
+</div></div>
+<div class="field full business-contact">
+  <label data-i18n="business_contact">東勳輕旅聯絡 Email</label>
+  <div class="business-email">Eulerbeam@yahoo.com.tw</div>
+</div>
+<div class="field full"><label data-i18n="f_contact_name">客戶窗口姓名</label><input id="customerName" type="text" data-i18n-placeholder="name_ph" placeholder="Your name / contact person" required=""/></div>
+<div class="field full"><label data-i18n="f_email">客戶 Email</label><input id="customerEmail" type="email" data-i18n-placeholder="email_ph" placeholder="Your email address" required=""/></div>
+<div class="field full"><label data-i18n="f_phone">客戶電話</label><input id="customerPhone" type="tel" data-i18n-placeholder="phone_ph" placeholder="Your phone number"/></div>
+<div class="field full"><label data-i18n="f_line">LINE ID</label><input id="customerLine" type="text" data-i18n-placeholder="line_ph" placeholder="Your LINE ID"/></div>
+<div class="field full"><label data-i18n="f_leader">RIDE LEADER</label><select id="rideLeader"><option data-i18n="leader_no">Not needed</option><option data-i18n="leader_full">Yes — full route / all riding days</option><option data-i18n="leader_selected">Yes — selected days or routes</option><option data-i18n="leader_unsure">Not sure — please advise</option></select></div>
+<div class="field full"><label data-i18n="f_notes">TRAVEL-AGENCY NEED / SPECIAL REQUIREMENTS</label><textarea data-i18n-placeholder="notes_placeholder" id="notes" placeholder="If you also need accommodation, a packaged itinerary or other travel-agency services, tell us here. We can consider a partner referral. Also include bike, luggage or route requirements."></textarea></div>
+</div>
+<div class="field full">
+<label data-i18n="f_referral">DO YOU NEED A TRAVEL-AGENCY REFERRAL?</label>
+<select id="travelReferral">
+<option data-i18n="ref_no">No — cycling support only</option>
+<option data-i18n="ref_yes">Yes — please provide a licensed travel agency contact if available</option>
+<option data-i18n="ref_unsure">Not sure — please advise which type of provider I may need</option>
+</select>
+</div>
+<div class="field full" style="margin-top:8px">
+<label data-i18n="ack"><input id="ack" required="" type="checkbox"/> I understand that this form requests cycling support services; it is not a booking for a packaged travel tour.</label>
+</div>
+<button class="btn goldbtn" data-i18n="submit" type="submit">提交單車支援需求</button>
+<div class="form-note" data-i18n="form_note">填寫完成後，按「提交單車支援需求」即可直接送出，不需要 Gmail 或其他 Email App。</div>
+<div id="inquirySummary" class="inquiry-summary" hidden>
+  <div class="summary-head">
+    <h3 data-i18n="summary_title">需求摘要</h3>
+    <span data-i18n="summary_status">請確認資料</span>
+  </div>
+  <div id="summaryContent" class="summary-content"></div>
+  <div class="summary-actions">
+    <button type="button" class="btn secondarybtn" id="copyInquiry" data-i18n="copy_summary">複製需求摘要</button>
+  </div>
+  <div id="emailStatus" class="form-note" aria-live="polite"></div>
+</div>
+</form></div></div></section>
+<section class="section alt" id="boundary">
+<div class="container">
+<div class="eyebrow" data-i18n="boundary_eyebrow">OUR SERVICE BOUNDARY</div>
+<h2 data-i18n="boundary_title">We Support Your Ride.<br/><span class="gold">We Are Not a Travel Agency.</span></h2>
+<p class="sub" data-i18n="boundary_sub">EASY TRAVEL BIKE provides cycling equipment, bike logistics and local cycling operational support. We do not sell packaged travel arrangements as a travel agency.</p>
+<div class="cards">
+<div class="card"><h3 data-i18n="provide_h">WE PROVIDE</h3><p data-i18n="provide_p">Bike rental · Bike transport · Luggage support · Cycling logistics · Support vehicle resources · Mechanical support · Backup bike resources.</p></div>
+<div class="card"><h3 data-i18n="arrange_h">YOU / YOUR TRAVEL AGENCY ARRANGE</h3><p data-i18n="arrange_p">Flights, accommodation and other travel products. If a packaged travel itinerary is required, please work with a licensed travel agency.</p></div>
+<div class="card"><h3 data-i18n="b2b_model_h">B2B PARTNER MODEL</h3><p data-i18n="b2b_model_p">Overseas cycling clubs, tour operators and licensed travel agencies can use us as a Taiwan-side cycling support partner.</p></div>
+<div class="card"><h3 data-i18n="svc5h2">PASSENGER TRANSFER SUPPORT</h3><p data-i18n="svc5p">Passenger transfers can be arranged through appropriately licensed transportation providers and suitable vehicles, subject to applicable Taiwan regulations and service requirements.</p></div>
+</div>
+<div class="box" style="margin-top:28px">
+<h3 data-i18n="clarify_h">Important clarification</h3>
+<p data-i18n="clarify_p">This website is designed to request cycling support services, not to purchase a packaged Taiwan tour. Accommodation, flights, visas, travel insurance and other travel products are not sold by EASY TRAVEL BIKE.</p>
+<p data-i18n="clarify_note" style="color:#aebdcd;font-size:13px">This is a business-positioning statement, not a legal opinion. Specific services and operating arrangements should be reviewed against applicable Taiwan regulations before commercial launch.</p>
+</div>
+</div>
+</section>
+<section class="section" id="travel-agency">
+<div class="container">
+<div class="eyebrow" data-i18n="agency_eyebrow">TRAVEL AGENCY REFERRAL</div>
+<h2 data-i18n="agency_title">Need Travel Arrangements?<br/><span class="gold">We Can Point You to a Licensed Partner.</span></h2>
+<p class="sub" data-i18n="agency_sub">EASY TRAVEL BIKE focuses on cycling support. If your trip also requires accommodation, flights, a packaged itinerary or other travel-agency services, we may provide contact information for a suitable licensed travel agency partner.</p>
+<div class="cards">
+<div class="card"><h3 data-i18n="when_agency">WHEN YOU NEED A TRAVEL AGENCY</h3><p data-i18n="when_agency_p">Ask us about accommodation, flights, packaged Taiwan tours, itinerary arrangements or other travel-agency services.</p></div>
+<div class="card"><h3 data-i18n="how_ref_h">HOW THE REFERRAL WORKS</h3><p data-i18n="how_ref_p">We provide partner information or a referral when appropriate. You contact and contract directly with the licensed travel agency for its travel services.</p></div>
+<div class="card"><h3 data-i18n="what_we_h">WHAT EASY TRAVEL BIKE DOES</h3><p data-i18n="what_we_p">We remain focused on cycling equipment, bike transport, luggage support, cycling logistics and other cycling-side services.</p></div>
+<div class="card"><h3 data-i18n="verify_h">PARTNER VERIFICATION</h3><p data-i18n="verify_p">Where we list a partner, we aim to identify the travel agency clearly and use current public registration information. Partner status can change and should be confirmed directly.</p></div>
+</div>
+<div class="box" style="margin-top:28px">
+<h3 data-i18n="agency_faq_h">FAQ · Do you recommend travel agencies?</h3>
+<p data-i18n="agency_faq_p"><strong>Yes, when appropriate.</strong> If you need travel-agency services beyond cycling support, we may introduce or provide contact information for a licensed travel agency partner. Travel services are discussed, contracted and paid for directly with that travel agency. EASY TRAVEL BIKE does not sell the travel-agency package on its behalf.</p>
+<p data-i18n="agency_verify_note" style="color:#aebdcd;font-size:13px">For a production website, each listed agency should be verified against the Taiwan Tourism Administration's current travel-agency records before publication and periodically thereafter.</p>
+</div>
+<div class="actions" style="margin-top:28px">
+<a class="btn outline" data-i18n="check_records" href="https://admin.taiwan.net.tw/BusinessInfo/Insurance?a=220" rel="noopener" target="_blank">CHECK TAIWAN TRAVEL AGENCY RECORDS</a>
+<a class="btn goldbtn" data-i18n="request_cycling" href="#quote">REQUEST CYCLING SUPPORT</a>
+</div>
+</div>
+</section>
+<section class="section"><div class="container"><div class="eyebrow" data-i18n="faq">FAQ</div><h2><span data-i18n="questions">Questions Before</span> <span class="gold" data-i18n="you_ride">You Ride.</span></h2><div class="faq">
+<details><summary data-i18n="faq1q">Do I need to rent a bike?</summary><p data-i18n="faq1p">No. Overseas riders can bring their own bikes and request local support such as bike transport, luggage transfer, passenger transfer support, support vehicles and mechanical assistance.</p></details>
+<details><summary data-i18n="faq2q">Can you support small VIP groups?</summary><p data-i18n="faq2p">Yes. The service model is designed to be flexible for small groups and customized cycling programs.</p></details>
+<details><summary data-i18n="faq3q">Can overseas cycling clubs work with you directly?</summary><p data-i18n="faq3p">Yes. The B2B pathway is designed for cycling clubs, bike shops, travel agencies and tour operators.</p></details>
+<details><summary data-i18n="faq4q">Can the itinerary be customized?</summary><p data-i18n="faq4p">Yes. Route, dates, rider count and service combinations can be discussed as part of the inquiry.</p></details>
+</div></div></section>
+<script>
+(function(){
+  const form=document.getElementById('quoteForm');
+  const summaryBox=document.getElementById('inquirySummary');
+  const summaryContent=document.getElementById('summaryContent');
+  const FORMSPREE_ENDPOINT='https://formspree.io/f/xkjgvkzy';
+  const copyBtn=document.getElementById('copyInquiry');
+  const emailStatus=document.getElementById('emailStatus');
+  let latestInquiryText='';
+
+  function val(id){
+    const el=document.getElementById(id);
+    return el ? (el.value || '').trim() : '';
+  }
+
+  function selectedText(id){
+    const el=document.getElementById(id);
+    if(!el || el.selectedIndex<0) return '';
+    return el.options[el.selectedIndex].textContent.trim();
+  }
+
+  function buildInquiry(){
+    const lang=localStorage.getItem('etb-lang')==='zh' ? 'zh' : 'en';
+    const labels=lang==='zh' ? {
+      country:'國家／市場', riders:'騎乘人數', start:'騎乘開始日期', end:'騎乘結束日期',
+      startPoint:'騎乘起點', endPoint:'騎乘終點', route:'路線／行程類型', direction:'騎乘方向', bike:'單車方式', services:'需要的服務', referral:'旅行社轉介',
+      name:'客戶窗口姓名', email:'客戶 Email', phone:'客戶電話', line:'LINE ID', leader:'領騎需求',
+      notes:'其他需求'
+    } : {
+      country:'Country / Market', riders:'Number of Cyclists', start:'Start Date', end:'End Date',
+      startPoint:'Starting Point', endPoint:'Ending Point', route:'Route / Trip Type', direction:'Riding Direction', bike:'Bike Plan', services:'Services Needed', referral:'Travel Agency Referral',
+      name:'Contact Person Name', email:'Customer Email', phone:'Customer Phone', line:'LINE ID', leader:'Ride Leader',
+      notes:'Special Requirements'
+    };
+
+    const serviceItems=[...document.querySelectorAll('.service-option-wrap')].filter(w=>{
+      const cb=w.querySelector('input[type="checkbox"]');
+      return cb && cb.checked;
+    }).map(w=>{
+      const cb=w.querySelector('input[type="checkbox"]');
+      const span=w.querySelector('span[data-i18n]');
+      const qty=w.querySelector('input[type="number"]');
+      const name=span ? span.textContent.trim() : cb.value;
+      return {name, qty: qty && qty.value ? qty.value : ''};
+    });
+
+    const serviceLines=serviceItems.length
+      ? serviceItems.map(x=>`<div class="summary-row"><span>${escapeHtml(x.name)}</span><strong>${x.qty ? escapeHtml(x.qty) : '—'}</strong></div>`).join('')
+      : `<div class="summary-muted">${lang==='zh'?'尚未選擇服務':'No service selected'}</div>`;
+
+    const lines=[
+      [labels.country,val('country')],
+      [labels.riders,val('riders')],
+      [labels.start,val('startDate')],
+      [labels.end,val('endDate')],
+      [labels.startPoint,val('startPoint')],
+      [labels.endPoint,val('endPoint')],
+      [labels.route,selectedText('route')],
+      [labels.direction,selectedText('direction')],
+      [labels.bike,selectedText('bike')],
+      [labels.referral,selectedText('travelReferral')],
+      [labels.name,val('customerName')],
+      [labels.email,val('customerEmail')],
+      [labels.phone,val('customerPhone')],
+      [labels.line,val('customerLine')],
+      [labels.leader,selectedText('rideLeader')],
+      [labels.notes,val('notes')]
+    ];
+
+    const html=lines.map(([k,v])=>`<div class="summary-row"><span>${escapeHtml(k)}</span><strong>${escapeHtml(v || '—')}</strong></div>`).join('')+
+      `<div class="summary-section"><h4>${escapeHtml(labels.services)}</h4>${serviceLines}</div>`;
+
+    summaryContent.innerHTML=html;
+
+    const textLines=[
+      'EASY TRAVEL BIKE｜東勳輕旅 - Cycling Support Inquiry',
+      '',
+      `${labels.country}: ${val('country')}`,
+      `${labels.riders}: ${val('riders')}`,
+      `${labels.start}: ${val('startDate')}`,
+      `${labels.end}: ${val('endDate')}`,
+      `${labels.route}: ${selectedText('route')}`,
+      `${labels.bike}: ${selectedText('bike')}`,
+      `${labels.referral}: ${selectedText('travelReferral')}`,
+      `${labels.services}: ${serviceItems.length ? serviceItems.map(x=>x.qty ? `${x.name} (${x.qty})` : x.name).join(', ') : '—'}`,
+      `${labels.email}: ${val('customerEmail')}`,
+      `${labels.phone}: ${val('customerPhone')}`,
+      `${labels.line}: ${val('customerLine')}`,
+      `${labels.leader}: ${selectedText('rideLeader')}`,
+      `${labels.notes}: ${val('notes') || '—'}`,
+      '',
+      'Prepared from EASY TRAVEL BIKE V5.2 website.'
+    ];
+    latestInquiryText=textLines.join('\n');
+    summaryBox.hidden=false;
+    summaryBox.scrollIntoView({behavior:'smooth',block:'start'});
+    emailStatus.textContent='';
+    return latestInquiryText;
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g,function(c){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]);
+    });
+  }
+
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const start=val('startDate'), end=val('endDate');
+    const lang=localStorage.getItem('etb-lang')==='zh' ? 'zh' : 'en';
+    if(start && end && end<start){
+      document.getElementById('endDate').setCustomValidity(lang==='zh' ? '結束日期不能早於開始日期。' : 'End date cannot be earlier than start date.');
+    }else{
+      document.getElementById('endDate').setCustomValidity('');
+    }
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+
+    buildInquiry();
+    emailStatus.textContent=lang==='zh' ? '正在送出需求，請稍候…' : 'Sending your inquiry, please wait…';
+
+    const data=new FormData();
+    data.append('_subject','EASY TRAVEL BIKE｜Cycling Support Inquiry');
+    data.append('_replyto',val('customerEmail'));
+    data.append('Customer Name',val('customerName'));
+    data.append('Customer Email',val('customerEmail'));
+    data.append('Customer Phone',val('customerPhone'));
+    data.append('LINE ID',val('customerLine'));
+    data.append('Country / Market',val('country'));
+    data.append('Number of Cyclists',val('riders'));
+    data.append('Start Date',val('startDate'));
+    data.append('End Date',val('endDate'));
+    data.append('Starting Point',val('startPoint'));
+    data.append('Ending Point',val('endPoint'));
+    data.append('Route / Trip Type',selectedText('route'));
+    data.append('Riding Direction',selectedText('direction'));
+    data.append('Bike Plan',selectedText('bike'));
+    data.append('Ride Leader',selectedText('rideLeader'));
+    data.append('Travel Agency Referral',selectedText('travelReferral'));
+    data.append('Special Requirements',val('notes'));
+    data.append('Language',lang==='zh' ? 'Traditional Chinese' : 'English');
+
+    const serviceItems=[...document.querySelectorAll('.service-option-wrap')].filter(w=>{
+      const cb=w.querySelector('input[type="checkbox"]');
+      return cb && cb.checked;
+    });
+    if(serviceItems.length){
+      serviceItems.forEach(w=>{
+        const cb=w.querySelector('input[type="checkbox"]');
+        const span=w.querySelector('span[data-i18n]');
+        const qty=w.querySelector('input[type="number"]');
+        const name=span ? span.textContent.trim() : cb.value;
+        data.append('Service - '+name,qty && qty.value ? qty.value : 'Selected');
+      });
+    }else{
+      data.append('Services Needed','None selected');
+    }
+    data.append('Inquiry Summary',latestInquiryText);
+
+    try{
+      const response=await fetch(FORMSPREE_ENDPOINT,{
+        method:'POST',
+        body:data,
+        headers:{'Accept':'application/json'}
+      });
+      if(response.ok){
+        emailStatus.textContent=lang==='zh'
+          ? '需求已成功送出。東勳輕旅已收到您的需求，我們會依您提供的資料進行確認。'
+          : 'Your inquiry has been sent successfully. EASY TRAVEL BIKE has received your request and will review the details.';
+        summaryBox.hidden=false;
+        form.querySelector('button[type="submit"]').disabled=true;
+      }else{
+        let msg='';
+        try{ const result=await response.json(); msg=result && result.errors ? result.errors.map(x=>x.message).join(' ') : ''; }catch(_){}
+        emailStatus.textContent=lang==='zh'
+          ? '送出時發生問題，請稍後再試。'+(msg?' '+msg:'')
+          : 'There was a problem sending your inquiry. Please try again.'+(msg?' '+msg:'');
+      }
+    }catch(err){
+      emailStatus.textContent=lang==='zh'
+        ? '目前無法連線到表單服務，請確認網路後再試。'
+        : 'The form service could not be reached. Please check your connection and try again.';
+    }
+  });
+
+  copyBtn.addEventListener('click',async function(){
+    if(!latestInquiryText) buildInquiry();
+    try{
+      await navigator.clipboard.writeText(latestInquiryText);
+      emailStatus.textContent=(localStorage.getItem('etb-lang')==='zh')
+        ? '需求摘要已複製。'
+        : 'Inquiry summary copied.';
+    }catch(e){
+      emailStatus.textContent=(localStorage.getItem('etb-lang')==='zh')
+        ? '瀏覽器不允許自動複製，請手動選取摘要。'
+        : 'Your browser did not allow automatic copying. Please select the summary manually.';
+    }
+  });
+})();
+</script>
+<script>
+const I18N={"en":{"page_title":"EASY TRAVEL BIKE｜東勳輕旅｜Your Taiwan Cycling Partner","country_ph":"Singapore","start_point_ph":"Taipei","end_point_ph":"Kaohsiung","contact_ph":"Your email / WhatsApp / LINE ID","business_contact":"Our Contact Email","f_email":"Customer Email","f_phone":"Customer Phone","f_line":"LINE ID","email_ph":"Your email address","phone_ph":"Your phone number","line_ph":"Your LINE ID","notes_placeholder":"If you also need accommodation, a packaged itinerary or other travel-agency services, tell us here. We can consider a partner referral. Also include bike, luggage or route requirements.","nav_services":"Services","nav_routes":"Routes","nav_support":"Support","nav_clubs":"For Clubs","nav_boundary":"Service Boundary","nav_partners":"Travel Partners","nav_quote":"Get a Quote","request_cycling":"REQUEST CYCLING SUPPORT","eyebrow":"YOUR TAIWAN CYCLING PARTNER","hero_title1":"Ride Taiwan.","hero_title2":"Travel Easy.","hero_lead":"Bike rental is only one part of what we do. Whether you rent a bike or bring your own, EASY TRAVEL BIKE helps coordinate the local support your Taiwan cycling trip needs.","request_quote":"REQUEST A QUOTE","bring_bike":"I BRING MY OWN BIKE","hero_tags":"LOCAL · FLEXIBLE · INTEGRATED · PRACTICAL","one_partner":"ONE LOCAL PARTNER","more_than":"More Than","bike_rental":"Bike Rental.","partner_sub":"A practical support system for overseas cyclists, cycling clubs and tour operators visiting Taiwan.","modules":"9 SUPPORT MODULES","build_your":"Build Your","ride":"Ride.","request_quote_label":"REQUEST A QUOTE","lets_plan":"Let's plan your","cycling_support":"Cycling Support.","quote_intro":"Tell us what you already know. If you are still planning, that's okay — we can start from the basics.","local":"LOCAL","local_p":"Local Taiwan knowledge and practical on-the-ground resources.","flexible":"FLEXIBLE","flexible_p":"Support from individual riders to VIP groups and larger tours.","integrated":"INTEGRATED","integrated_p":"Bike, people, luggage, vehicle and mechanic resources can be combined.","practical":"PRACTICAL","practical_p":"One point of contact to reduce the complexity of your Taiwan ride.","svc1h":"01 · BIKE RENTAL","svc1p":"Road bikes and group bike resources.","svc2h":"02 · E-BIKE RENTAL","svc2p":"E-bike resources for riders and groups.","svc3h":"03 · BIKE TRANSPORT","svc3p":"Move bikes between airports, hotels, cities and routes.","svc4h":"04 · LUGGAGE TRANSFER","svc4p":"Ride light while luggage moves between stays.","svc5h":"05 · PASSENGER TRANSFER SUPPORT","svc5p":"Passenger transfers can be arranged through appropriately licensed transportation providers and suitable vehicles, subject to applicable Taiwan regulations and service requirements.","svc6h":"06 · SUPPORT VEHICLE","svc6p":"Follow-vehicle support for selected groups and routes.","svc7h":"07 · PROFESSIONAL MECHANIC","svc7p":"Local mechanical assistance when your group needs it.","svc8h":"08 · BACKUP BIKE","svc8p":"Contingency bike resources for unexpected problems.","svc9h":"09 · RIDE LEADER","svc9p":"Local cycling support to lead your group along the planned route. This is a cycling support role, not a tour guide service.","svc5h2":"PASSENGER TRANSFER SUPPORT","routes_eyebrow":"TAIWAN BY BIKE","routes_title":"Choose Your <span class=\"gold\">Route.</span>","routes_sub":"From a complete Taiwan round island to a focused mountain or coastal ride.","route_round":"Taiwan Round Island","route_east":"East Coast","route_wuling":"Wuling","route_north":"North Taiwan","route_south":"South Taiwan","route_custom":"Custom Route","route_other":"Other","direction_clockwise":"Clockwise","direction_counterclockwise":"Counterclockwise","direction_linear":"Linear / Point-to-Point","byo_eyebrow":"BRING YOUR OWN BIKE","byo_title":"Your Bike.<br><span class=\"gold\">Our Local Support.</span>","byo_sub":"You do not have to rent a bicycle to work with us. Bring your own bike and use our local resources.","example_title":"Example: self-bike group","example_intro":"8 riders can combine:","li_bike":"Bike transport","li_luggage":"Luggage transfer","li_transfer":"Airport & hotel transfer","li_vehicle":"Support vehicle","li_mechanic":"Professional mechanic","li_backup":"Backup bike resource","b2b_eyebrow":"FOR CYCLING CLUBS & TOUR OPERATORS","b2b_title":"Your Taiwan <span class=\"gold\">Local Partner.</span>","b2b_sub":"For overseas cycling clubs, bike shops, licensed travel agencies and tour operators who need Taiwan-side cycling execution support.","step_inquiry":"Inquiry","step_inquiry_p":"Tell us riders, dates and route.","step_plan":"Plan","step_plan_p":"We organize the support modules.","step_quote":"Quote","step_quote_p":"Receive a practical service proposal.","step_execute":"Execute","step_execute_p":"Coordinate the Taiwan-side operation.","next_title":"What happens next?","next_p":"1. Your request is prepared as a clear inquiry summary.<br>2. You can review it before sending.<br>3. Your request is sent directly to EASY TRAVEL BIKE through the connected form service.","f_country":"COUNTRY / MARKET","f_riders":"NUMBER OF CYCLISTS","f_date":"CYCLING DATE","f_route":"ROUTE","f_bike":"BIKE PLAN","opt_rent":"Rent a bike","opt_bring":"Bring my own bike","opt_unsure":"Not sure yet","f_services":"SERVICES NEEDED","svc_short1":"Bike Rental","svc_short2":"E-Bike Rental","svc_short3":"Bike Transport","svc_short4":"Luggage Transfer","svc_short5":"Passenger Transfer Support","svc_short6":"Support Vehicle","svc_short7":"Professional Mechanic","svc_short8":"Backup Bike","svc_short9":"Ride Leader","qty_bike_rental":"How many bikes do you need?","qty_ebike_rental":"How many e-bikes do you need?","qty_bike_transport":"How many bikes need transport?","qty_luggage":"About how many pieces of luggage per day?","qty_passengers":"How many passengers need transfer support?","qty_vehicle":"How many support vehicles do you need?","qty_mechanic":"How many mechanics do you need?","qty_backup":"How many backup bikes do you need?","qty_leader":"How many ride leaders do you need?","f_contact":"YOUR CONTACT","f_leader":"RIDE LEADER","leader_no":"Not needed","leader_full":"Yes — full route / all riding days","leader_selected":"Yes — selected days or routes","leader_unsure":"Not sure — please advise","f_notes":"TRAVEL-AGENCY NEED / SPECIAL REQUIREMENTS","f_referral":"DO YOU NEED A TRAVEL-AGENCY REFERRAL?","ref_no":"No — cycling support only","ref_yes":"Yes — please provide a licensed travel agency contact if available","ref_unsure":"Not sure — please advise which type of provider I may need","ack":"I understand that this form requests cycling support services; it is not a booking for a packaged travel tour.","submit":"Submit Cycling Support Inquiry","form_note":"Click Submit Cycling Support Inquiry to send your request directly. No Gmail or email app is required.","boundary_eyebrow":"OUR SERVICE BOUNDARY","boundary_title":"We Support Your Ride.<br><span class=\"gold\">We Are Not a Travel Agency.</span>","boundary_sub":"EASY TRAVEL BIKE provides cycling equipment, bike logistics and local cycling operational support. We do not sell packaged travel arrangements as a travel agency.","provide_h":"WE PROVIDE","provide_p":"Bike rental · Bike transport · Luggage support · Cycling logistics · Support vehicle resources · Mechanical support · Backup bike resources.","arrange_h":"YOU / YOUR TRAVEL AGENCY ARRANGE","arrange_p":"Flights, accommodation and other travel products. If a packaged travel itinerary is required, please work with a licensed travel agency.","b2b_model_h":"B2B PARTNER MODEL","b2b_model_p":"Overseas cycling clubs, tour operators and licensed travel agencies can use us as a Taiwan-side cycling support partner.","clarify_h":"Important clarification","clarify_p":"This website is designed to request cycling support services, not to purchase a packaged Taiwan tour. Accommodation, flights, visas, travel insurance and other travel products are not sold by EASY TRAVEL BIKE.","clarify_note":"This is a business-positioning statement, not a legal opinion. Specific services and operating arrangements should be reviewed against applicable Taiwan regulations before commercial launch.","agency_eyebrow":"TRAVEL AGENCY REFERRAL","agency_title":"Need Travel Arrangements?<br><span class=\"gold\">We Can Point You to a Licensed Partner.</span>","agency_sub":"EASY TRAVEL BIKE focuses on cycling support. If your trip also requires accommodation, flights, a packaged itinerary or other travel-agency services, we may provide contact information for a suitable licensed travel agency partner.","when_agency":"WHEN YOU NEED A TRAVEL AGENCY","when_agency_p":"Ask us about accommodation, flights, packaged Taiwan tours, itinerary arrangements or other travel-agency services.","how_ref_h":"HOW THE REFERRAL WORKS","how_ref_p":"We provide partner information or a referral when appropriate. You contact and contract directly with the licensed travel agency for its travel services.","what_we_h":"WHAT EASY TRAVEL BIKE DOES","what_we_p":"We remain focused on cycling equipment, bike transport, luggage support, cycling logistics and other cycling-side services.","verify_h":"PARTNER VERIFICATION","verify_p":"Where we list a partner, we aim to identify the travel agency clearly and use current public registration information. Partner status can change and should be confirmed directly.","agency_faq_h":"FAQ · Do you recommend travel agencies?","agency_faq_p":"<strong>Yes, when appropriate.</strong> If you need travel-agency services beyond cycling support, we may introduce or provide contact information for a licensed travel agency partner. Travel services are discussed, contracted and paid for directly with that travel agency. EASY TRAVEL BIKE does not sell the travel-agency package on its behalf.","agency_verify_note":"For a production website, each listed agency should be verified against the Taiwan Tourism Administration's current travel-agency records before publication and periodically thereafter.","check_records":"CHECK TAIWAN TRAVEL AGENCY RECORDS","faq":"FAQ","questions":"Questions Before","you_ride":"You Ride.","faq1q":"Do I need to rent a bike?","faq1p":"No. Overseas riders can bring their own bikes and request local support such as bike transport, luggage transfer, passenger transfer support, support vehicles and mechanical assistance.","faq2q":"Can you support small VIP groups?","faq2p":"Yes. The service model is designed to be flexible for small groups and customized cycling programs.","faq3q":"Can overseas cycling clubs work with you directly?","faq3p":"Yes. The B2B pathway is designed for cycling clubs, bike shops, travel agencies and tour operators.","faq4q":"Can the itinerary be customized?","faq4p":"Yes. Route, dates, rider count and service combinations can be discussed as part of the inquiry.","hero_panel":"TAIWAN<br/><b>CYCLING<br/>SUPPORT</b>"},"zh":{"page_title":"EASY TRAVEL BIKE｜東勳輕旅｜您的台灣單車夥伴","country_ph":"例如：新加坡","start_point_ph":"例如：台北","end_point_ph":"例如：高雄","contact_ph":"您的 Email／WhatsApp／LINE ID","business_contact":"東勳輕旅聯絡 Email","f_email":"您的 Email","f_phone":"您的電話","f_line":"LINE ID","email_ph":"請輸入您的 Email","phone_ph":"請輸入您的電話","line_ph":"請輸入您的 LINE ID","notes_placeholder":"如果您還需要住宿、套裝行程或其他旅行社服務，請在此告訴我們。我們可以協助評估旅行社轉介，也請一併說明單車、行李或路線需求。","nav_services":"服務","nav_routes":"台灣路線","nav_support":"自帶單車","nav_clubs":"單車團隊","nav_boundary":"服務範圍","nav_partners":"旅行社合作","nav_quote":"提出需求","request_cycling":"提出單車支援需求","eyebrow":"您的台灣單車夥伴","hero_title1":"騎遍台灣。","hero_title2":"輕鬆出發。","hero_lead":"單車租賃只是我們服務的一部分。無論您租用單車或自備單車，東勳輕旅都能協助整合台灣在地騎乘所需的支援。","request_quote":"提出需求","bring_bike":"我自備單車","hero_tags":"在地 · 彈性 · 整合 · 實務","one_partner":"一個在地夥伴","more_than":"不只是","bike_rental":"單車租賃。","partner_sub":"為來台騎乘的海外車友、單車社團與旅遊業者提供實務型支援。","modules":"9 大單車支援服務","build_your":"打造您的","ride":"騎乘方案。","request_quote_label":"提出需求","lets_plan":"一起規劃您的","cycling_support":"單車支援。","quote_intro":"告訴我們您目前已確定的資訊即可。如果還在規劃中也沒關係，我們可以從基本需求開始。","local":"在地","local_p":"熟悉台灣單車路線與實際執行需求，提供在地資源支援。","flexible":"彈性","flexible_p":"從個人車友、VIP 小團到大型團體，都可以依需求組合。","integrated":"整合","integrated_p":"單車、人員、行李、車輛與技師等資源可以依需求整合。","practical":"實務","practical_p":"由一個聯絡窗口協助降低台灣單車行程的執行複雜度。","svc1h":"01 · 單車租賃","svc1p":"公路車及團體單車資源。","svc2h":"02 · 電輔車租賃","svc2p":"提供車友及團體所需的電輔車資源。","svc3h":"03 · 單車運輸","svc3p":"協助單車在機場、飯店、城市及騎乘路線之間移動。","svc4h":"04 · 行李轉運","svc4p":"讓車友輕裝騎乘，行李在住宿地點之間轉運。","svc5h":"05 · 旅客接駁支援","svc5p":"依旅客人數、行李、單車及行程需求，透過符合台灣相關法規及資格要求的交通服務業者與適當車輛進行安排。","svc6h":"06 · 支援車","svc6p":"依團體及路線需求安排隨行支援車服務。","svc7h":"07 · 專業技師","svc7p":"提供單車調整、故障處理及騎乘期間的維修支援。","svc8h":"08 · 備用單車","svc8p":"遇到突發狀況時，提供備用單車資源。","svc9h":"09 · 單車領騎","svc9p":"由熟悉騎乘路線的在地領騎人員帶領車隊依規劃路線前進。此為單車騎乘支援服務，並非導遊服務。","svc5h2":"旅客接駁支援","routes_eyebrow":"台灣單車旅行","routes_title":"選擇您的<span class=\"gold\">騎乘路線。</span>","routes_sub":"從完整環島，到山線或海岸線的主題騎乘，都可以依需求規劃。","route_round":"台灣環島","route_east":"東部海岸","route_wuling":"武嶺","route_north":"北台灣","route_south":"南台灣","route_custom":"客製路線","route_other":"其他","direction_clockwise":"順時針","direction_counterclockwise":"逆時針","direction_linear":"直線／點對點","byo_eyebrow":"自備單車","byo_title":"您的單車。<br><span class=\"gold\">我們的在地支援。</span>","byo_sub":"您不一定要向我們租車。帶著自己的單車來台，也可以使用我們的在地單車支援資源。","example_title":"例如：自備單車團","example_intro":"8 位車友可以組合：","li_bike":"單車運輸","li_luggage":"行李轉運","li_transfer":"機場與飯店接駁","li_vehicle":"支援車","li_mechanic":"專業技師","li_backup":"備用單車資源","b2b_eyebrow":"提供單車社團與旅遊業者","b2b_title":"您的台灣<span class=\"gold\">在地夥伴。</span>","b2b_sub":"適合海外單車社團、單車店、合法旅行社及旅遊業者，需要台灣端單車執行支援時使用。","step_inquiry":"需求","step_inquiry_p":"告訴我們人數、日期與路線。","step_plan":"規劃","step_plan_p":"依需求組合單車支援服務。","step_quote":"報價","step_quote_p":"提供實務型服務方案。","step_execute":"執行","step_execute_p":"協調台灣端的實際執行。","next_title":"接下來會怎麼進行？","next_p":"1. 系統整理您的需求摘要。<br>2. 您可以先確認內容。<br>3. 需求會透過已連接的表單服務直接送至東勳輕旅。","f_country":"國家／市場","f_riders":"騎乘人數","f_date":"騎乘日期","f_start_date":"騎乘開始日期","f_end_date":"騎乘結束日期","f_start_point":"騎乘起點","f_end_point":"騎乘終點","f_direction":"騎乘方向","f_route":"路線／行程類型","f_bike":"單車方式","opt_rent":"租用單車","opt_bring":"自備單車","opt_unsure":"尚未確定","f_services":"需要哪些服務","svc_short1":"單車租賃","svc_short2":"電輔車租賃","svc_short3":"單車運輸","svc_short4":"行李轉運","svc_short5":"旅客接駁支援","svc_short6":"支援車","svc_short7":"專業技師","svc_short8":"備用單車","svc_short9":"單車領騎","f_contact":"聯絡方式","f_leader":"單車領騎需求","leader_no":"不需要","leader_full":"需要－全程／所有騎乘日","leader_selected":"需要－指定日期或路段","leader_unsure":"尚不確定，希望協助建議","f_notes":"旅行社需求／其他特殊需求","f_referral":"是否需要旅行社轉介？","ref_no":"不需要－僅需要單車支援","ref_yes":"需要－如有合適的合法旅行社，請提供聯絡資訊","ref_unsure":"尚不確定－請協助判斷需要哪類服務業者","ack":"我了解此表單是申請單車支援服務，不是購買套裝旅遊行程。","submit":"提交單車支援需求","form_note":"填寫完成後，按「提交單車支援需求」即可直接送出，不需要 Gmail 或其他 Email App。","boundary_eyebrow":"我們的服務範圍","boundary_title":"支援您的騎乘。<br><span class=\"gold\">我們不是旅行社。</span>","boundary_sub":"東勳輕旅提供單車設備、單車物流及台灣在地騎乘執行支援，不以旅行社身分銷售套裝旅遊行程。","provide_h":"我們提供","provide_p":"單車租賃 · 單車運輸 · 行李支援 · 單車物流 · 支援車資源 · 技師支援 · 備用單車資源。","arrange_h":"由您／您的旅行社安排","arrange_p":"機票、住宿及其他旅遊產品。如需要套裝旅遊行程，請與合法旅行社合作。","b2b_model_h":"B2B 合作模式","b2b_model_p":"海外單車社團、旅遊業者及合法旅行社可以把我們作為台灣端的單車支援夥伴。","clarify_h":"重要說明","clarify_p":"本網站用於提出單車支援需求，不是用來購買台灣套裝旅遊。住宿、機票、簽證、旅遊保險及其他旅遊安排等旅遊產品並非由東勳輕旅銷售。","clarify_note":"這是商業定位說明，不是法律意見。正式商業運作前，具體服務及執行方式仍應依台灣適用法規進行確認。","agency_eyebrow":"旅行社轉介合作","agency_title":"需要旅遊安排？<br><span class=\"gold\">我們可以協助您找到合法旅行社夥伴。</span>","agency_sub":"東勳輕旅專注於單車支援。如果您的行程還需要住宿、機票、套裝行程或其他旅行社服務，我們可以視需求提供合適合法旅行社夥伴的聯絡資訊。","when_agency":"什麼情況需要旅行社？","when_agency_p":"如果需要住宿、機票、台灣套裝旅遊、行程安排或其他旅行社服務，可以向我們提出需求。","how_ref_h":"轉介如何進行？","how_ref_p":"在適當情況下，我們提供合作夥伴資訊或轉介。旅遊服務由您直接與合法旅行社聯絡、簽約及付款。","what_we_h":"東勳輕旅負責什麼？","what_we_p":"我們持續專注於單車設備、單車運輸、行李支援、單車物流及其他單車相關服務。","verify_h":"合作夥伴確認","verify_p":"如網站列出合作夥伴，我們會盡量清楚標示旅行社名稱並參考目前公開登記資訊。合作資格可能變動，仍應直接向旅行社確認。","agency_faq_h":"常見問題 · 你們會推薦旅行社嗎？","agency_faq_p":"<strong>在適當情況下可以。</strong> 如果您需要單車支援以外的旅行社服務，我們可以介紹或提供合法旅行社夥伴的聯絡資訊。旅遊服務由您直接與該旅行社洽談、簽約及付款。東勳輕旅不代替旅行社銷售其套裝行程。","agency_verify_note":"正式網站若列出旅行社，應在刊登前及後續定期依台灣觀光署目前公開資料確認其旅行社資格。 ","check_records":"查詢台灣旅行社公開資料","faq":"常見問題","questions":"騎乘前的","you_ride":"常見問題","faq1q":"一定要向你們租單車嗎？","faq1p":"不需要。海外車友可以自備單車，並申請單車運輸、行李轉運、旅客接駁支援、支援車及技師等在地服務。","faq2q":"可以支援小型 VIP 團嗎？","faq2p":"可以。我們的服務模式可以依小型團體及客製化騎乘需求彈性組合。","faq3q":"海外單車社團可以直接和你們合作嗎？","faq3p":"可以。B2B 合作模式適合單車社團、單車店、旅行社及旅遊業者。","faq4q":"路線可以客製化嗎？","faq4p":"可以。路線、日期、人數及服務組合都可以在需求確認時討論。","hero_panel":"台灣<br/><b>單車<br/>支援</b>"}};
+function setLang(lang){const d=I18N[lang]||I18N.en;lang=I18N[lang]?lang:'en';document.documentElement.lang=lang==='zh'?'zh-Hant':lang;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.dataset.i18n;if(d[k]!==undefined)el.innerHTML=d[k]});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.dataset.i18nPlaceholder;if(d[k]!==undefined)el.placeholder=d[k]});document.title=d.page_title||'EASY TRAVEL BIKE｜東勳輕旅｜Your Taiwan Cycling Partner';document.querySelectorAll('.langbtn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));localStorage.setItem('etb-lang',lang)}
+document.querySelectorAll('.langbtn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));setLang(localStorage.getItem('etb-lang')||'en');
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const start = document.getElementById('startDate');
+  const end = document.getElementById('endDate');
+
+  function syncDateRange() {
+    if (!start || !end) return;
+    if (start.value) {
+      end.min = start.value;
+      if (end.value && end.value < start.value) {
+        end.value = '';
+      }
+    } else {
+      end.removeAttribute('min');
+    }
+  }
+
+  if (start && end) {
+    start.addEventListener('change', syncDateRange);
+    end.addEventListener('change', function () {
+      if (start.value && end.value && end.value < start.value) {
+        end.setCustomValidity('結束日期不能早於開始日期。');
+      } else {
+        end.setCustomValidity('');
+      }
+    });
+    syncDateRange();
+  }
+
+  document.querySelectorAll('.checks.service-options input[type="checkbox"]').forEach(function (cb) {
+    cb.checked = false;
+  });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.service-option input[type="checkbox"][data-detail]').forEach(function(cb){
+    const detail=document.getElementById(cb.getAttribute('data-detail'));
+    if(!detail) return;
+    const input=detail.querySelector('input');
+    function sync(){
+      detail.style.display=cb.checked ? 'block' : 'none';
+      if(!cb.checked && input) input.value='';
+    }
+    cb.addEventListener('change',sync);
+    sync();
+  });
+});
+</script>
+</body></html>
