@@ -561,6 +561,21 @@ function setLang(lang){const d=I18N[lang]||I18N.en;lang=I18N[lang]?lang:'en';doc
 document.querySelectorAll('.langbtn').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));setLang(localStorage.getItem('etb-lang')||'en');
 </script>
 <script>
+function updateSeoLink(){
+  const link=document.querySelector('[data-seo-link]');
+  const lang=localStorage.getItem('etb-lang')||'en';
+  if(!link)return;
+  if(lang==='zh'){
+    link.textContent='環島｜電輔車租借｜單車支援';
+    link.href='taiwan-cycling-zh.html';
+  }else{
+    link.textContent='Round Island｜E-bike Rental｜Cycling Support';
+    link.href='taiwan-cycling-en.html';
+  }
+}
+document.querySelectorAll('.langbtn').forEach(b=>b.addEventListener('click',()=>setTimeout(updateSeoLink,0)));
+updateSeoLink();
+</script><script>
 document.addEventListener('DOMContentLoaded', function () {
   const start = document.getElementById('startDate');
   const end = document.getElementById('endDate');
