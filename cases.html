@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>台灣單車騎遊案例｜東勳輕旅 | EASY TRAVEL BIKE</title>
+
+  <meta name="description"
+        content="東勳輕旅台灣單車騎遊實際案例，包含一日圈、異地取還車、電輔車、環島、中央山脈縱騎、山林騎遊與團體單車活動。">
+
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://www.easytravelbike.com/cases.html">
+
+  <style>
+    :root{
+      --navy:#102a43;
+      --gold:#c9a227;
+      --green:#4f8f7b;
+      --darkgreen:#234b3d;
+      --light:#f5f7f6;
+      --text:#263238;
+      --white:#ffffff;
+      --line:#dfe5e2;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;
+      color:var(--text);
+      background:var(--light);
+      line-height:1.7;
+    }
+
+    header{
+      background:var(--navy);
+      color:white;
+      padding:18px 20px;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    .nav{
+      max-width:1100px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+    }
+
+    .brand{
+      font-weight:700;
+      letter-spacing:.5px;
+    }
+
+    .brand small{
+      display:block;
+      font-size:11px;
+      letter-spacing:1.5px;
+      opacity:.8;
+    }
+
+    .langs{
+      display:flex;
+      gap:8px;
+    }
+
+    .langbtn{
+      border:1px solid rgba(255,255,255,.5);
+      background:transparent;
+      color:white;
+      border-radius:20px;
+      padding:7px 12px;
+      cursor:pointer;
+    }
+
+    .langbtn.active{
+      background:white;
+      color:var(--navy);
+    }
+
+    main{
+      max-width:1100px;
+      margin:auto;
+      padding:45px 20px 70px;
+    }
+
+    .hero{
+      text-align:center;
+      margin-bottom:40px;
+    }
+
+    .hero h1{
+      margin:0 0 12px;
+      color:var(--navy);
+      font-size:clamp(30px,5vw,48px);
+    }
+
+    .hero p{
+      max-width:760px;
+      margin:0 auto;
+      color:#52616b;
+      font-size:17px;
+    }
+
+    .intro{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:24px;
+      margin-bottom:35px;
+      text-align:center;
+    }
+
+    .intro strong{
+      color:var(--navy);
+    }
+
+    .filters{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:30px;
+    }
+
+    .filter{
+      border:1px solid var(--line);
+      background:white;
+      color:var(--navy);
+      border-radius:24px;
+      padding:9px 16px;
+      cursor:pointer;
+    }
+
+    .filter.active{
+      background:var(--navy);
+      color:white;
+      border-color:var(--navy);
+    }
+
+    .cases{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px;
+    }
+
+    .case{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 4px 16px rgba(16,42,67,.06);
+    }
+
+    .case-media{
+      height:190px;
+      background:linear-gradient(135deg,#dceee8,#9fc9bd,#dfeaf2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--navy);
+      font-size:26px;
+      font-weight:700;
+      letter-spacing:2px;
+    }
+
+    .case-body{
+      padding:22px;
+    }
+
+    .case-tag{
+      display:inline-block;
+      color:var(--darkgreen);
+      background:#e9f3ef;
+      border-radius:20px;
+      padding:4px 10px;
+      font-size:13px;
+      margin-bottom:10px;
+    }
+
+    .case h2{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:22px;
+      line-height:1.4;
+    }
+
+    .case p{
+      margin:0 0 16px;
+      color:#52616b;
+    }
+
+    .case-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn{
+      display:inline-block;
+      text-decoration:none;
+      border-radius:24px;
+      padding:9px 15px;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    .btn-primary{
+      background:var(--gold);
+      color:white;
+    }
+
+    .btn-outline{
+      border:1px solid var(--navy);
+      color:var(--navy);
+      background:white;
+    }
+
+    .empty{
+      text-align:center;
+      padding:40px 20px;
+      color:#667781;
+      display:none;
+    }
+
+    .cta{
+      margin-top:50px;
+      background:var(--navy);
+      color:white;
+      border-radius:20px;
+      padding:35px 25px;
+      text-align:center;
+    }
+
+    .cta h2{
+      margin:0 0 10px;
+      font-size:28px;
+    }
+
+    .cta p{
+      margin:0 auto 20px;
+      max-width:650px;
+      opacity:.9;
+    }
+
+    .cta a{
+      display:inline-block;
+      background:var(--gold);
+      color:white;
+      text-decoration:none;
+      padding:12px 22px;
+      border-radius:25px;
+      font-weight:700;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 20px;
+      color:#71808a;
+      font-size:13px;
+    }
+
+    @media(max-width:600px){
+      main{
+        padding-top:30px;
+      }
+
+      .hero p{
+        font-size:15px;
+      }
+
+      .case-media{
+        height:170px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      東勳輕旅
+      <small>EASY TRAVEL BIKE</small>
+    </div>
+
+    <div class="langs">
+      <button class="langbtn" data-lang="en">EN</button>
+      <button class="langbtn active" data-lang="zh">繁中</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h1 id="pageTitle">台灣騎遊案例</h1>
+    <p id="pageIntro">
+      從一日圈、異地取還車，到環島、中央山脈縱騎與山林騎遊，
+      看看東勳輕旅如何協助不同類型的單車旅程。
+    </p>
+  </section>
+
+  <section class="intro">
+    <strong id="coreMessage">
+      人到哪裡，車到哪裡；騎到哪裡，車收哪裡。
+    </strong>
+    <br>
+    <span id="introMessage">
+      以下案例將陸續增加，分享東勳輕旅實際執行過的騎遊與單車支援經驗。
+    </span>
+  </section>
+
+  <div class="filters" id="filters"></div>
+
+  <section class="cases" id="cases"></section>
+
+  <div class="empty" id="empty">
+    暫時沒有符合條件的案例。
+  </div>
+
+  <section class="cta">
+    <h2 id="ctaTitle">想規劃自己的騎遊？</h2>
+    <p id="ctaText">
+      告訴我們出發地、目的地、日期與人數，
+      東勳輕旅可以依照你的需求討論車輛與後勤安排。
+    </p>
+    <a id="ctaButton" href="index.html#quote">立即詢問</a>
+  </section>
+
+</main>
+
+<footer>
+  © EASY TRAVEL BIKE｜東勳輕旅
+</footer>
+
+<script>
+  const cases = [
+    {
+      id:"01",
+      category:"一日圈",
+      title:"台北／高雄 → 花蓮騎遊",
+      description:"客戶搭乘大眾運輸抵達花蓮，東勳安排自行車與電輔車，讓團隊抵達後即可開始騎遊。",
+      image:"",
+      facebook:""
+    },
+    {
+      id:"02",
+      category:"中央山脈縱騎",
+      title:"中央山脈縱向騎行｜8天北到南",
+      description:"實際執行中央山脈縱騎服務，面對長距離、高山與連續爬坡路段，提供車輛與後勤支援。",
+      image:"",
+      facebook:""
+    },
+    {
+      id:"03",
+      category:"山林騎遊",
+      title:"五峰／觀霧林道一日騎遊",
+      description:"台北客戶搭乘大眾運輸抵達新竹，再由東勳接駁至山區，進行林道與觀霧深度騎遊。",
+      image:"",
+      facebook:""
+    },
+    {
+      id:"04",
+      category:"一日圈",
+      title:"北海岸／基隆／瑞芳／十分",
+      description:"利用異地配車與收車方式，把北海岸、基隆、瑞芳及十分等地串成一日騎遊。",
+      image:"",
+      facebook:""
+    },
+    {
+      id:"05",
+      category:"異地騎遊",
+      title:"日月潭 → 阿里山 → 塔塔加",
+      description:"多日異地騎遊案例，依照客戶行程安排車輛配送與後續收還車方式。",
+      image:"",
+      facebook:""
+    },
+    {
+      id:"06",
+      category:"團體合作",
+      title:"40人旅行社地區交流單車活動",
+      description:"與合作夥伴共同完成約40人次的旅行社地區交流單車活動，展現大型團體車輛與後勤整合能力。",
+      image:"",
+      facebook:""
+    }
+  ];
+
+  const translations = {
+    zh:{
+      pageTitle:"台灣騎遊案例",
+      pageIntro:"從一日圈、異地取還車，到環島、中央山脈縱騎與山林騎遊，看看東勳輕旅如何協助不同類型的單車旅程。",
+      coreMessage:"人到哪裡，車到哪裡；騎到哪裡，車收哪裡。",
+      introMessage:"以下案例將陸續增加，分享東勳輕旅實際執行過的騎遊與單車支援經驗。",
+      ctaTitle:"想規劃自己的騎遊？",
+      ctaText:"告訴我們出發地、目的地、日期與人數，東勳輕旅可以依照你的需求討論車輛與後勤安排。",
+      ctaButton:"立即詢問",
+      all:"全部",
+      view:"查看案例",
+      facebook:"Facebook"
+    },
+    en:{
+      pageTitle:"Taiwan Cycling Experiences",
+      pageIntro:"From day-trip cycling circles and point-to-point bike logistics to round-island rides, mountain crossings and forest routes, explore what Easy Travel Bike has actually supported.",
+      coreMessage:"People go where they want. Bikes go where they need to be.",
+      introMessage:"More real cycling cases will be added over time.",
+      ctaTitle:"Planning your own cycling trip?",
+      ctaText:"Tell us your start point, destination, date and group size. We can discuss bikes, transport and support options.",
+      ctaButton:"Request a Quote",
+      all:"All",
+      view:"View Case",
+      facebook:"Facebook"
+    }
+  };
+
+  let currentLang = localStorage.getItem("etb-lang") || "zh";
+  let currentFilter = "all";
+
+  function setLang(lang){
+    currentLang = translations[lang] ? lang : "zh";
+    const t = translations[currentLang];
+
+    document.documentElement.lang = currentLang === "zh" ? "zh-Hant-TW" : "en";
+
+    document.getElementById("pageTitle").textContent = t.pageTitle;
+    document.getElementById("pageIntro").textContent = t.pageIntro;
+    document.getElementById("coreMessage").textContent = t.coreMessage;
+    document.getElementById("introMessage").textContent = t.introMessage;
+    document.getElementById("ctaTitle").textContent = t.ctaTitle;
+    document.getElementById("ctaText").textContent = t.ctaText;
+    document.getElementById("ctaButton").textContent = t.ctaButton;
+
+    document.querySelectorAll(".langbtn").forEach(btn=>{
+      btn.classList.toggle("active",btn.dataset.lang===currentLang);
+    });
+
+    renderFilters();
+    renderCases();
+    localStorage.setItem("etb-lang",currentLang);
+  }
+
+  function renderFilters(){
+    const container = document.getElementById("filters");
+    const t = translations[currentLang];
+
+    const categories = [...new Set(cases.map(item=>item.category))];
+
+    container.innerHTML =
+      `<button class="filter ${currentFilter==="all"?"active":""}" onclick="setFilter('all')">${t.all}</button>` +
+      categories.map(category=>
+        `<button class="filter ${currentFilter===category?"active":""}" onclick="setFilter('${category}')">${category}</button>`
+      ).join("");
+  }
+
+  function setFilter(filter){
+    currentFilter = filter;
+    renderFilters();
+    renderCases();
+  }
+
+  function renderCases(){
+    const container = document.getElementById("cases");
+    const empty = document.getElementById("empty");
+    const t = translations[currentLang];
+
+    const filtered = currentFilter==="all"
+      ? cases
+      : cases.filter(item=>item.category===currentFilter);
+
+    if(filtered.length===0){
+      container.innerHTML="";
+      empty.style.display="block";
+      return;
+    }
+
+    empty.style.display="none";
+
+    container.innerHTML = filtered.map(item=>{
+      const media = item.image
+        ? `<img src="${item.image}" alt="${item.title}" style="width:100%;height:100%;object-fit:cover;">`
+        : `<span>CASE ${item.id}</span>`;
+
+      const fb = item.facebook
+        ? `<a class="btn btn-outline" href="${item.facebook}" target="_blank" rel="noopener">${t.facebook}</a>`
+        : "";
+
+      return `
+        <article class="case">
+          <div class="case-media">${media}</div>
+
+          <div class="case-body">
+            <div class="case-tag">${item.category}</div>
+
+            <h2>${item.title}</h2>
+
+            <p>${item.description}</p>
+
+            <div class="case-actions">
+              <a class="btn btn-primary" href="index.html#quote">${t.view}</a>
+              ${fb}
+            </div>
+          </div>
+        </article>
+      `;
+    }).join("");
+  }
+
+  document.querySelectorAll(".langbtn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      setLang(btn.dataset.lang);
+    });
+  });
+
+  setLang(currentLang);
+</script>
+
+</body>
+</html>
