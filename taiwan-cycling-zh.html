@@ -1107,13 +1107,13 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
         我們相信，騎單車不只是抵達目的地，更是一種認識台灣山海與旅行生活的方式。
       </p>
 <p><strong>騎見台灣，與您同行。</strong></p>
-<!-- V3.72: 影片數字選擇器版本。基礎檔：taiwan-cycling-zh.html -->
+<!-- V3.73: 影片數字選擇器 + 聲音修正。基礎檔：V3.72 -->
 <div id="cta-video-area" class="cta-video-area" hidden aria-label="影片播放區"></div>
 <div id="cta-video-numbers" class="cta-video-numbers" hidden aria-label="影片選擇"></div>
 <div class="cta-share-wrap">
   <button type="button" id="cta-share-btn" class="cta-share-btn" aria-label="分享此區塊">分享此區塊</button>
 </div>
-<script id="v3-72-video-selector">
+<script id="v3-73-video-selector">
 (function(){
   const area=document.getElementById('cta-video-area');
   const numbers=document.getElementById('cta-video-numbers');
@@ -1125,7 +1125,9 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
     const file=videos[index];
     if(!file) return;
     const src=file.download_url || ('/video/'+encodeURIComponent(file.name));
-    area.innerHTML='<video controls playsinline preload="metadata" aria-label="影片 '+(index+1)+'"><source src="'+src+'"></video>';
+    area.innerHTML='<video controls playsinline preload="metadata" aria-label="影片 '+(index+1)+'" muted="false"><source src="'+src+'"></video>';
+    const player=area.querySelector('video');
+    if(player){ player.muted=false; player.defaultMuted=false; player.volume=1.0; }
     Array.from(numbers.querySelectorAll('.cta-video-number')).forEach((btn,i)=>{
       btn.classList.toggle('active',i===index);
       btn.setAttribute('aria-current',i===index?'true':'false');
@@ -1158,7 +1160,7 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
         });
       });
 
-      // 第一次進入頁面：隨機播放一部；之後可用下方數字直接切換。
+      // 第一次進入頁面：隨機選取一部；播放時保持聲音開啟，之後可用下方數字直接切換。
       const randomIndex=Math.floor(Math.random()*videos.length);
       showVideo(videos,randomIndex);
     })
