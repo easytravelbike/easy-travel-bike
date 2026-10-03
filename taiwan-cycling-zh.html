@@ -965,30 +965,30 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
 </style>
 
 <!-- V3.62: V3.61 dynamic original-ratio carousel + 5 new photos; slides ordered by aspect ratio to keep similar photo proportions adjacent. -->
-<!-- V3.72 -->
-<style id="v3-72-video-selector">
-/* V3.72：影片區依 /video/ 目錄自動建立數字選擇鍵。
-   - 首次進入隨機選一部影片
-   - 影片下方依實際影片數量顯示 1、2、3…
-   - 點數字可直接切換指定影片
-   - 沒有影片時整個影片區（含數字）不顯示
+<style>
+.cta-video-area{margin:20px auto 0;max-width:900px;}
+.cta-video-area video{display:block;width:100%;height:auto;max-height:70vh;border-radius:14px;object-fit:contain;background:#000;}
+</style>
+
+<style id="v3-72-video-number-selector">
+/* V3.72: 影片播放區下方顯示 1、2、3… 數字按鈕，直接切換指定影片。
+   - 首次進入隨機選取一部影片
+   - 數字數量依 /video/ 實際影片數量自動產生
+   - 沒有影片時，影片區與數字按鈕一起隱藏
 */
 .cta-video-area{margin:20px auto 0;max-width:900px;}
 .cta-video-area video{display:block;width:100%;height:auto;max-height:70vh;border-radius:14px;object-fit:contain;background:#000;}
-.cta-video-selector{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px;margin:12px auto 0;}
-.cta-video-number{appearance:none;min-width:34px;height:32px;padding:4px 9px;border:1px solid rgba(6,24,47,.28);border-radius:8px;background:#fff;color:#102a43;font:inherit;font-size:14px;font-weight:800;line-height:1;cursor:pointer;}
-.cta-video-number:hover{border-color:var(--gold,#c9a227);color:#102a43;}
-.cta-video-number.active{background:var(--gold,#c9a227);border-color:var(--gold,#c9a227);color:#fff;}
-@media(max-width:600px){
-  .cta-video-selector{gap:6px;margin-top:10px;}
-  .cta-video-number{min-width:32px;height:30px;padding:3px 8px;font-size:13px;}
-}
-</style>
-
-<style>
+.cta-video-numbers{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:12px auto 0;max-width:900px;}
+.cta-video-number{appearance:none;min-width:38px;height:36px;padding:0 10px;border:1px solid #c9a227;border-radius:8px;background:#fff;color:#102a43;font-weight:800;font-size:15px;line-height:34px;text-align:center;cursor:pointer;}
+.cta-video-number:hover{background:#f7efd2;}
+.cta-video-number.active{background:#c9a227;color:#fff;border-color:#c9a227;}
 .cta-share-wrap{text-align:center;margin-top:16px;}
 .cta-share-btn{appearance:none;border:1px solid var(--gold,#c9a227);background:var(--gold,#c9a227);color:#fff;font-weight:800;padding:10px 20px;border-radius:999px;cursor:pointer;font-size:15px;line-height:1.2;}
 .cta-share-btn:active{transform:translateY(1px);}
+@media(max-width:600px){
+  .cta-video-numbers{gap:6px;padding:0 4px;}
+  .cta-video-number{min-width:34px;height:34px;padding:0 8px;line-height:32px;font-size:14px;}
+}
 </style>
 </head>
 <body>
@@ -1107,77 +1107,66 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
         我們相信，騎單車不只是抵達目的地，更是一種認識台灣山海與旅行生活的方式。
       </p>
 <p><strong>騎見台灣，與您同行。</strong></p>
+<!-- V3.72: 影片數字選擇器版本。基礎檔：taiwan-cycling-zh.html -->
 <div id="cta-video-area" class="cta-video-area" hidden aria-label="影片播放區"></div>
+<div id="cta-video-numbers" class="cta-video-numbers" hidden aria-label="影片選擇"></div>
 <div class="cta-share-wrap">
   <button type="button" id="cta-share-btn" class="cta-share-btn" aria-label="分享此區塊">分享此區塊</button>
 </div>
-<script id="v3-72-video-selector-script">
+<script id="v3-72-video-selector">
 (function(){
   const area=document.getElementById('cta-video-area');
-  if(!area) return;
+  const numbers=document.getElementById('cta-video-numbers');
+  if(!area || !numbers) return;
 
-  const api='https://api.github.com/repos/easytravelbike/easy-travel-bike/contents/video?per_page=100';
-  const videoExt=/\.(mp4|webm|ogg|mov)$/i;
+  const repoVideoApi='https://api.github.com/repos/easytravelbike/easy-travel-bike/contents/video';
 
-  fetch(api,{headers:{Accept:'application/vnd.github+json'}})
+  function showVideo(videos,index){
+    const file=videos[index];
+    if(!file) return;
+    const src=file.download_url || ('/video/'+encodeURIComponent(file.name));
+    area.innerHTML='<video controls playsinline preload="metadata" aria-label="影片 '+(index+1)+'"><source src="'+src+'"></video>';
+    Array.from(numbers.querySelectorAll('.cta-video-number')).forEach((btn,i)=>{
+      btn.classList.toggle('active',i===index);
+      btn.setAttribute('aria-current',i===index?'true':'false');
+    });
+    area.hidden=false;
+    numbers.hidden=false;
+  }
+
+  fetch(repoVideoApi,{headers:{Accept:'application/vnd.github+json'}})
     .then(r=>r.ok?r.json():[])
     .then(files=>{
       const videos=(Array.isArray(files)?files:[])
-        .filter(f=>f&&f.type==='file'&&videoExt.test(f.name))
+        .filter(f=>f&&f.type==='file'&&/\.(mp4|webm|ogg|mov)$/i.test(f.name))
         .sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true,sensitivity:'base'}));
 
-      // 沒有影片：整個影片區（包括數字按鈕）保持隱藏。
-      if(!videos.length){area.hidden=true;return;}
-
-      area.hidden=false;
-      area.innerHTML='';
-
-      const player=document.createElement('video');
-      player.controls=true;
-      player.playsInline=true;
-      player.preload='metadata';
-      player.muted=true;
-      player.setAttribute('aria-label','影片播放區');
-
-      const selector=document.createElement('div');
-      selector.className='cta-video-selector';
-      selector.setAttribute('aria-label','影片選擇');
-
-      const buttons=[];
-
-      function playVideo(index,autoPlay){
-        const i=(index+videos.length)%videos.length;
-        const file=videos[i];
-        const src=file.download_url || ('https://easytravelbike.github.io/easy-travel-bike/video/'+encodeURIComponent(file.name));
-        player.src=src;
-        player.load();
-        buttons.forEach((b,n)=>b.classList.toggle('active',n===i));
-        player.setAttribute('aria-label','第 '+(i+1)+' 部影片');
-        if(autoPlay){
-          const p=player.play();
-          if(p&&typeof p.catch==='function') p.catch(()=>{});
-        }
+      if(!videos.length){
+        area.hidden=true;
+        numbers.hidden=true;
+        numbers.innerHTML='';
+        return;
       }
 
-      videos.forEach((file,index)=>{
-        const b=document.createElement('button');
-        b.type='button';
-        b.className='cta-video-number';
-        b.textContent=String(index+1);
-        b.setAttribute('aria-label','播放第 '+(index+1)+' 部影片');
-        b.addEventListener('click',()=>playVideo(index,true));
-        selector.appendChild(b);
-        buttons.push(b);
+      numbers.innerHTML=videos.map((file,index)=>
+        '<button type="button" class="cta-video-number" data-video-index="'+index+'" aria-label="播放第 '+(index+1)+' 部影片">'+(index+1)+'</button>'
+      ).join('');
+
+      numbers.querySelectorAll('.cta-video-number').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          showVideo(videos,Number(btn.dataset.videoIndex));
+        });
       });
 
-      area.appendChild(player);
-      area.appendChild(selector);
-
-      // 第一次進入：隨機選擇一部影片。
+      // 第一次進入頁面：隨機播放一部；之後可用下方數字直接切換。
       const randomIndex=Math.floor(Math.random()*videos.length);
-      playVideo(randomIndex,true);
+      showVideo(videos,randomIndex);
     })
-    .catch(()=>{area.hidden=true;});
+    .catch(()=>{
+      area.hidden=true;
+      numbers.hidden=true;
+      numbers.innerHTML='';
+    });
 })();
 </script>
 <script>
