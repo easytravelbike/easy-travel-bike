@@ -561,8 +561,8 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
 @media(max-width:760px){.case-share-btn{font-size:14px;padding:8px 12px;}}
 </style>
 <script id="v439-seo-structured-data" type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"台灣單車騎遊案例｜東勳輕旅 | EasyTravelBike","description":"東勳輕旅台灣單車騎遊案例與提案總覽，包含電輔車、自行車、團體騎行與異地騎遊服務案例。","url":"https://easytravelbike.github.io/easy-travel-bike/Cases.html","isPartOf":{"@type":"WebSite","name":"東勳輕旅 | EasyTravelBike","url":"https://easytravelbike.github.io/easy-travel-bike/"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"清境。武嶺。電輔行","url":"https://easytravelbike.github.io/easy-travel-bike/project-001.html"},{"@type":"ListItem","position":2,"name":"再戰武嶺。迷霧堅持。終現大景。","url":"https://easytravelbike.github.io/easy-travel-bike/project-002.html"},{"@type":"ListItem","position":3,"name":"花東山海戀約騎-8/15,8/16 兩天一夜！","url":"https://easytravelbike.github.io/easy-travel-bike/project-003.html"},{"@type":"ListItem","position":4,"name":"五日高強度環台1200公里（109Hr）","url":"https://easytravelbike.github.io/easy-travel-bike/project-004.html"},{"@type":"ListItem","position":5,"name":"大環島 台東花蓮宜蘭基隆淡水","url":"https://easytravelbike.github.io/easy-travel-bike/project-005.html"}]}}</script>
-<meta content="Cases.html V7" name="version"/>
-<!-- V7: added Project 005 with 23 user-provided photos, 2 Facebook reference links, and project-level video detection via project-005.html. Existing Projects preserved. -->
+<meta content="Cases.html V8 JSON Video Test" name="version"/>
+<!-- V8 test: Cases reads each Project JSON for video status; missing/invalid JSON is treated as no video. -->
 </head>
 <body>
 <header class="nav"><div class="container nav-in">
@@ -683,32 +683,24 @@ document.querySelectorAll('.v43-carousel').forEach(car=>{const slides=[...car.qu
 </script>
 <script id="v443-project-video-check">
 /*
-  Cases.html：Project 影片同步規則
-  每一個 Project 都以自己的 project-00X.html「影片」欄位為唯一判定來源。
-  Project 有影片 → Cases 顯示「▶ 觀看影片」，並連到該 Project。
-  Project 沒有影片 → Cases 隱藏影片欄位。
-  不對任何特定 Project（001/002/003/004/005）做特殊處理。
+  Cases.html V8 JSON Video Test
+  每個 Project 使用自己的 project-00X.json 判斷是否有影片。
+
+  project-001.html -> project-001.json
+  project-002.html -> project-002.json
+  ...
+
+  JSON：
+    { "project": "001", "file": "project-001.html", "video": true/false }
+
+  安全規則：
+  - video === true  -> 顯示「▶ 觀看影片」
+  - video === false -> 隱藏影片欄位
+  - JSON 不存在 / 無法讀取 / 格式錯誤 / video 缺失 -> 視同沒有影片
+  - 不讀取大型 Project HTML 來判斷影片
+  - 單一 Project 的 JSON 錯誤不影響其他 Project 或整個 Cases.html
 */
 (function(){
-  function hasVideoContent(videoField){
-    if(!videoField) return false;
-
-    // 影片檔案：video 本身或 source。
-    if(videoField.querySelector('video[src], video[data-src], video source[src], video source[data-src]')) return true;
-
-    // YouTube / Facebook / 其他嵌入影片。
-    if(videoField.querySelector('iframe[src], embed[src], object[data]')) return true;
-
-    // 明確的影片網址。
-    const videoUrlNodes=videoField.querySelectorAll('[data-video-url], a[href], video[src], video source[src], video source[data-src]');
-    for(const node of videoUrlNodes){
-      const url=node.getAttribute('data-video-url') || node.getAttribute('href') || node.getAttribute('src') || node.getAttribute('data-src') || '';
-      if(/youtube\.com|youtu\.be|facebook\.com|\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(url) || /^data:video\//i.test(url)) return true;
-    }
-
-    return false;
-  }
-
   function getProjectUrl(card){
     const btn=card.querySelector('.case-share-btn');
     return card.getAttribute('data-project-url') ||
@@ -716,42 +708,74 @@ document.querySelectorAll('.v43-carousel').forEach(car=>{const slides=[...car.qu
       btn?.getAttribute('data-share-path') || '';
   }
 
-  async function syncProjectVideo(card, videoField){
-    const projectUrl=getProjectUrl(card);
-    if(!projectUrl){ videoField.remove(); return; }
+  function getProjectJsonUrl(projectUrl){
+    const clean=String(projectUrl).split('#')[0].split('?')[0];
+    if(!/\.html$/i.test(clean)) return '';
+    return clean.replace(/\.html$/i,'.json');
+  }
 
-    let absoluteUrl;
-    try{ absoluteUrl=new URL(projectUrl,window.location.href).href; }
-    catch(e){ videoField.remove(); return; }
+  async function syncProjectVideo(card, videoField){
+    videoField.style.display='none';
+
+    const projectUrl=getProjectUrl(card);
+    if(!projectUrl){
+      videoField.remove();
+      return;
+    }
+
+    const jsonUrl=getProjectJsonUrl(projectUrl);
+    if(!jsonUrl){
+      videoField.remove();
+      return;
+    }
+
+    let absoluteProjectUrl;
+    let absoluteJsonUrl;
 
     try{
-      const response=await fetch(absoluteUrl,{credentials:'same-origin',cache:'no-store'});
-      if(!response.ok){ videoField.remove(); return; }
+      absoluteProjectUrl=new URL(projectUrl,window.location.href).href;
+      absoluteJsonUrl=new URL(jsonUrl,window.location.href).href;
+    }catch(e){
+      videoField.remove();
+      return;
+    }
 
-      const html=await response.text();
-      const doc=new DOMParser().parseFromString(html,'text/html');
-      const projectVideoField=Array.from(doc.querySelectorAll('.v43-field')).find(function(field){
-        return (field.querySelector('.v43-field-title')?.textContent || '').trim()==='影片';
+    try{
+      const response=await fetch(absoluteJsonUrl,{
+        credentials:'same-origin',
+        cache:'no-store'
       });
 
-      if(!hasVideoContent(projectVideoField)){
+      // 找不到 JSON 或讀取失敗：視同沒有影片。
+      if(!response.ok){
+        videoField.remove();
+        return;
+      }
+
+      const data=await response.json();
+
+      // 只有明確 true 才顯示。
+      if(data?.video !== true){
         videoField.remove();
         return;
       }
 
       videoField.style.display='';
       const box=videoField.querySelector('.v43-video-box');
+
       if(box){
         box.innerHTML='';
         const link=document.createElement('a');
         link.className='v43-video-link';
-        link.href=absoluteUrl;
+        link.href=absoluteProjectUrl;
         link.target='_blank';
         link.rel='noopener noreferrer';
         link.textContent='▶ 觀看影片';
         box.appendChild(link);
       }
     }catch(e){
+      // JSON 不存在、格式錯誤、網路錯誤等：
+      // 一律視同沒有影片，不讓 Cases.html 當掉。
       videoField.remove();
     }
   }
