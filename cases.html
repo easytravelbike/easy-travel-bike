@@ -681,95 +681,85 @@ document.querySelectorAll('.v43-carousel').forEach(car=>{const slides=[...car.qu
 </script>
 <script id="v443-project-video-check">
 /*
-  Cases.html V4.43
-  影片規則：
-  先讀取該案例的 Project HTML，再檢查 Project 的「影片」欄位。
-  Project 有影片 → 顯示播放按鍵。
-  Project 沒有影片 → 整個影片區域不顯示。
+  Cases.html：Project 影片同步規則
+  每一個 Project 都以自己的 project-00X.html「影片」欄位為唯一判定來源。
+  Project 有影片 → Cases 顯示「▶ 觀看影片」，並連到該 Project。
+  Project 沒有影片 → Cases 隱藏影片欄位。
+  不對任何特定 Project（001/002/003/004/005）做特殊處理。
 */
 (function(){
-  function isVideoUrl(url){
-    if(!url) return false;
-    const u=String(url).trim().toLowerCase();
-    return /youtube\.com\/watch\?v=|youtu\.be\//i.test(u)
-      || /facebook\.com/i.test(u)
-      || /\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(u)
-      || /^data:video\//i.test(u);
-  }
-
-  function projectHasVideo(doc){
-    const fields=Array.from(doc.querySelectorAll('.v43-field'));
-    const videoField=fields.find(function(field){
-      return (field.querySelector('.v43-field-title')?.textContent||'').trim()==='影片';
-    });
+  function hasVideoContent(videoField){
     if(!videoField) return false;
 
-    if(videoField.querySelector('video[src], video source[src], video source[data-src]')) return true;
+    // 影片檔案：video 本身或 source。
+    if(videoField.querySelector('video[src], video[data-src], video source[src], video source[data-src]')) return true;
 
-    const iframe=videoField.querySelector('iframe[src]');
-    if(iframe && iframe.getAttribute('src')) return true;
+    // YouTube / Facebook / 其他嵌入影片。
+    if(videoField.querySelector('iframe[src], embed[src], object[data]')) return true;
 
-    const player=videoField.querySelector('[data-video-url]');
-    if(player && isVideoUrl(player.getAttribute('data-video-url'))) return true;
+    // 明確的影片網址。
+    const videoUrlNodes=videoField.querySelectorAll('[data-video-url], a[href], video[src], video source[src], video source[data-src]');
+    for(const node of videoUrlNodes){
+      const url=node.getAttribute('data-video-url') || node.getAttribute('href') || node.getAttribute('src') || node.getAttribute('data-src') || '';
+      if(/youtube\.com|youtu\.be|facebook\.com|\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(url) || /^data:video\//i.test(url)) return true;
+    }
 
-    return Array.from(videoField.querySelectorAll('a[href]'))
-      .some(function(a){ return isVideoUrl(a.getAttribute('href')); });
+    return false;
   }
 
-  async function checkProject(card, videoField){
-    videoField.style.display='none';
-
+  function getProjectUrl(card){
     const btn=card.querySelector('.case-share-btn');
-    const projectUrl=
-      card.getAttribute('data-project-url') ||
+    return card.getAttribute('data-project-url') ||
       btn?.getAttribute('data-project-url') ||
-      btn?.getAttribute('data-share-path');
+      btn?.getAttribute('data-share-path') || '';
+  }
 
-    if(!projectUrl) return;
+  async function syncProjectVideo(card, videoField){
+    const projectUrl=getProjectUrl(card);
+    if(!projectUrl){ videoField.remove(); return; }
 
     let absoluteUrl;
     try{ absoluteUrl=new URL(projectUrl,window.location.href).href; }
-    catch(e){ return; }
+    catch(e){ videoField.remove(); return; }
 
     try{
       const response=await fetch(absoluteUrl,{credentials:'same-origin',cache:'no-store'});
-      if(!response.ok) return;
+      if(!response.ok){ videoField.remove(); return; }
 
-      const text=await response.text();
-      const doc=new DOMParser().parseFromString(text,'text/html');
+      const html=await response.text();
+      const doc=new DOMParser().parseFromString(html,'text/html');
+      const projectVideoField=Array.from(doc.querySelectorAll('.v43-field')).find(function(field){
+        return (field.querySelector('.v43-field-title')?.textContent || '').trim()==='影片';
+      });
 
-      if(projectHasVideo(doc)){
-        videoField.style.display='';
-        const box=videoField.querySelector('.v43-video-box');
-        if(box){
-          box.innerHTML='';
-          const link=document.createElement('a');
-          link.className='v43-video-link';
-          link.href=absoluteUrl;
-          link.target='_blank';
-          link.rel='noopener noreferrer';
-          link.textContent='▶ 觀看影片';
-          box.appendChild(link);
-        }
-      }else{
+      if(!hasVideoContent(projectVideoField)){
         videoField.remove();
+        return;
+      }
+
+      videoField.style.display='';
+      const box=videoField.querySelector('.v43-video-box');
+      if(box){
+        box.innerHTML='';
+        const link=document.createElement('a');
+        link.className='v43-video-link';
+        link.href=absoluteUrl;
+        link.target='_blank';
+        link.rel='noopener noreferrer';
+        link.textContent='▶ 觀看影片';
+        box.appendChild(link);
       }
     }catch(e){
-      // 無法讀取 Project 時採保守規則：不顯示影片。
       videoField.remove();
     }
   }
 
-  function runProjectVideoChecks(){
-    document.querySelectorAll('.case-card').forEach(function(card){
-      const videoField=Array.from(card.querySelectorAll('.v43-field')).find(function(field){
-        return (field.querySelector('.v43-field-title')?.textContent||'').trim()==='影片';
-      });
-      if(videoField) checkProject(card,videoField);
+  document.querySelectorAll('.case-card').forEach(function(card){
+    const videoField=Array.from(card.querySelectorAll('.v43-field')).find(function(field){
+      return (field.querySelector('.v43-field-title')?.textContent || '').trim()==='影片';
     });
-  }
-
-  runProjectVideoChecks();
+    if(videoField) syncProjectVideo(card,videoField);
+  });
 })();
 </script>
 <script id="v439-share-script">
