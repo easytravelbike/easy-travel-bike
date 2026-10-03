@@ -664,7 +664,9 @@ document.querySelectorAll('.v43-carousel').forEach(car=>{const slides=[...car.qu
     fields.querySelectorAll('.v43-field').forEach(field=>{
       const title=(field.querySelector('.v43-field-title')?.textContent||'').trim();
       const empty=field.querySelector('.v43-empty');
-      if(empty){field.remove();return;}
+      // 影片欄位由後面的 Project 影片同步程式統一判定，這裡不能先移除。
+      if(empty && title!=='影片'){field.remove();return;}
+      if(title==='影片') return;
       field.querySelector('.v43-field-title')?.remove();
       if(title==='內容區'){
         field.querySelectorAll('.v43-content strong').forEach(el=>{
