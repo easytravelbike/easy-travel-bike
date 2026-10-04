@@ -6,6 +6,17 @@
 <title>台灣單車環島｜電輔車出租｜單車支援｜東勳輕旅 EasyTravelBike</title><meta charset="utf-8"/>
 <meta content="台灣單車環島、電輔車出租、單車支援與台灣山海單車旅行服務。東勳輕旅 EasyTravelBike，提供台灣單車旅行所需的租車、接送、行李與單車支援。" name="description"/>
 <meta content="index, follow" name="robots"/>
+<!-- Social preview: fixed default image for Facebook/LINE sharing. The in-page video carousel remains independently selectable. -->
+<meta property="og:title" content="台灣單車環島｜電輔車出租｜單車支援｜東勳輕旅 EasyTravelBike"/>
+<meta property="og:description" content="騎見台灣，與您同行。東勳輕旅 EasyTravelBike，提供台灣單車旅行所需的租車、接送、行李與單車支援。"/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://easytravelbike.github.io/easy-travel-bike/Taiwan-Cycling-ZH.html"/>
+<meta property="og:image" content="https://easytravelbike.github.io/easy-travel-bike/og-taiwan-cycling-zh.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://easytravelbike.github.io/easy-travel-bike/og-taiwan-cycling-zh.jpg"/>
+
 <link href="https://easytravelbike.github.io/easy-travel-bike/Taiwan-Cycling-ZH.html" rel="canonical"/>
 <!-- Taiwan Cycling service page test: Project records removed; original service layout retained. -->
 <style>
@@ -1107,7 +1118,7 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
         我們相信，騎單車不只是抵達目的地，更是一種認識台灣山海與旅行生活的方式。
       </p>
 <p><strong>騎見台灣，與您同行。</strong></p>
-<!-- V3.73: 影片數字選擇器 + 聲音修正。基礎檔：V3.72 -->
+<!-- V3.74: Facebook/LINE 固定分享預覽圖 + 影片輪播預設第 1 部影片。基礎檔：V3.73 -->
 <div id="cta-video-area" class="cta-video-area" hidden aria-label="影片播放區"></div>
 <div id="cta-video-numbers" class="cta-video-numbers" hidden aria-label="影片選擇"></div>
 <div class="cta-share-wrap">
@@ -1160,9 +1171,9 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
         });
       });
 
-      // 第一次進入頁面：隨機選取一部；播放時保持聲音開啟，之後可用下方數字直接切換。
-      const randomIndex=Math.floor(Math.random()*videos.length);
-      showVideo(videos,randomIndex);
+      // 第一次進入頁面：預設第 1 部影片；之後可用下方數字直接切換任意影片。
+      // Facebook/LINE 分享預覽則使用 head 內固定的 og:image，不依賴影片 JavaScript。
+      showVideo(videos,0);
     })
     .catch(()=>{
       area.hidden=true;
