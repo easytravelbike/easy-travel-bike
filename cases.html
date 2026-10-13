@@ -602,6 +602,90 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
 }
 </style>
 
+
+<style id="cases-index-section-unification-v1">
+/* Match Index.html section rhythm: consistent pale-green canvas, with separation by spacing rather than inset white cards. */
+:root {
+  --bg: #F5FAF2;
+  --bg-alt: #EAF3E3;
+  --text: #294333;
+  --border: #D6E4CF;
+  --green: #7FA66A;
+  --green-dark: #527A45;
+}
+body,
+.cases-page {
+  background: var(--bg, #F5FAF2) !important;
+  color: var(--text, #294333) !important;
+}
+.cases-hero {
+  background: var(--bg, #F5FAF2) !important;
+  color: var(--text, #294333) !important;
+  border-bottom: 1px solid var(--border, #D6E4CF);
+}
+.cases-hero h1,
+.cases-hero p { color: var(--text, #294333) !important; }
+.cases-hero p { color: #3a5648 !important; }
+.cases-intro {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 24px !important;
+}
+.cases-intro strong { color: var(--green-dark, #527A45) !important; }
+.cases-intro > div { color: #3a5648 !important; }
+.cases-main {
+  background: var(--bg, #F5FAF2) !important;
+  color: var(--text, #294333) !important;
+}
+.cases-grid {
+  display: block !important;
+  background: transparent !important;
+}
+.case-card {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  margin: 28px 0 0 !important;
+  padding: 24px 0 30px !important;
+  border-top: 1px solid var(--border, #D6E4CF) !important;
+}
+.case-card:first-child { margin-top: 18px !important; }
+.case-card-top,
+.case-details {
+  background: transparent !important;
+}
+.case-card-top { padding: 0 0 10px !important; }
+.case-details { padding: 0 0 8px !important; }
+.case-detail { border-top: 1px solid rgba(82,122,69,.16) !important; }
+.case-card h2 { color: var(--text, #294333) !important; }
+.case-summary,
+.case-detail { color: #3a5648 !important; }
+.cases-cta {
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid var(--border, #D6E4CF) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--text, #294333) !important;
+  padding: 28px 0 !important;
+}
+.cases-cta h2 { color: var(--text, #294333) !important; }
+@media (max-width: 760px) {
+  .case-card {
+    margin: 22px 0 0 !important;
+    padding: 22px 20px 28px !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
+  .cases-intro { margin-left: 20px !important; margin-right: 20px !important; }
+  .cases-cta { margin-left: 20px !important; margin-right: 20px !important; }
+}
+</style>
 </head>
 <body>
 <header class="nav">

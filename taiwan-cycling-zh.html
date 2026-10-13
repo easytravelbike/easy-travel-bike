@@ -1625,6 +1625,91 @@ html:lang(zh-Hant) .navlinks>a:nth-child(3) br{
   .cta-video-number{min-width:34px;height:34px;padding:0 8px;line-height:32px;font-size:14px;}
 }
 </style>
+
+<style id="index-clean-light-green-unified">
+/* Unified with Index and the approved Cases visual direction: light green, clean sections, no nested white rounded panels. */
+:root {
+  --bg: #F5FAF2;
+  --bg-alt: #EAF3E3;
+  --text: #294333;
+  --muted: #526B59;
+  --line: rgba(82, 122, 69, 0.25);
+  --border: #D6E4CF;
+  --green: #7FA66A;
+  --green-dark: #527A45;
+}
+body, .cases-page, .cases-main {
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+.cases-hero.case-card,
+.cases-main .case-card,
+.cases-cta {
+  background: transparent !important;
+  color: var(--text) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.cases-hero.case-card {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+.cases-hero.case-card .case-card-top,
+.cases-main .case-card .case-card-top {
+  background: transparent !important;
+  padding: 30px 0 10px !important;
+}
+.cases-hero.case-card h1,
+.cases-main .case-card h2,
+.cases-cta h2 {
+  color: var(--green-dark) !important;
+}
+.cases-hero.case-card p,
+.cases-main .case-summary,
+.cases-main .case-card li,
+.cases-cta p {
+  color: var(--text) !important;
+}
+.cases-main {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 0 4% 48px !important;
+}
+.cases-main .case-card {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 0 30px !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+.cases-main .case-card + .case-card { margin-top: 0 !important; }
+.cases-main .case-card .case-details { padding: 0 !important; }
+.cases-main .case-detail { border-top: 0 !important; padding: 0 !important; }
+.cases-main .case-card h2 { font-size: clamp(23px, 3vw, 30px) !important; line-height: 1.35 !important; margin: 0 0 12px !important; }
+.cases-main .case-summary { font-size: 17px !important; line-height: 1.8 !important; margin: 0 0 14px !important; }
+.cases-cta {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 32px 4% 44px !important;
+  border-top: 1px solid var(--border) !important;
+  text-align: left !important;
+}
+.cases-cta a { background: var(--green) !important; color: #fff !important; }
+@media (max-width: 760px) {
+  .cases-hero.case-card { margin: 0 !important; }
+  .cases-hero.case-card .case-card-top { padding: 30px 6% 10px !important; }
+  .cases-main { padding: 0 6% 32px !important; }
+  .cases-main .case-card { padding: 0 0 26px !important; }
+  .cases-main .case-card .case-card-top { padding: 26px 0 10px !important; }
+  .cases-main .case-card h2 { font-size: 24px !important; line-height: 1.45 !important; }
+  .cases-main .case-summary, .cases-main .case-card li { font-size: 16px !important; line-height: 1.8 !important; }
+  .cases-cta { padding: 28px 6% 36px !important; }
+  .cases-cta h2 { font-size: 24px !important; }
+}
+</style>
+
 </head>
 <body>
 <header class="nav">
